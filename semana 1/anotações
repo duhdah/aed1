@@ -1,0 +1,23 @@
+
+    Objetivo: Praticar o bastante para saber identificar a melhor estrutura de dados a ser usada para um determinado tipo de dado.
+    
+    Os algoritmos que vamos elaborar podem funcionar para numeros e quaisquer outros elementos.
+    
+    Um método é mais eficiente que outro quando ele é mais rápido e/ou mais simples.
+    Ser mais eficiente sempre depende da aplicação. Cada técnica tem suas vantagens e desvantagens.
+    
+    A prova costuma ser no final do semestre e o trabalho da agenda, no meio.
+    Os 4 exercícios práticos são códigos que devem ser feitos em aula. Pode levar em casa e tem 3 dias para corrigir e fazer um vídeo.
+    Nas provas, plagio detectado é nota zero.
+    Nos trabalhos, é permitido usar conteúdo da internet e consulta a colegas, desde que faça uma citação.
+    A nota é dada somente sobre o conteúdo original.
+    
+    Chamada no inicio. 
+    
+    Regras de codigo: Doom 3. Não escrever códigos fora do padrão.
+    Pode fazer em aula sem estar no padrão, mas sempre entregar no padrão.
+    
+    Nos vídeos, se não conseguir fazer algo, explicar o que tentou fazer. O raciocínio certo vale nota.
+    
+    Dr. Memory/Valgrind: Memory Leak.
+    O relatório de um dos programas tem que aparecer nos vídeos, mostrando que não tem memory leak.
