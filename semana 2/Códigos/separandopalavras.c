@@ -19,6 +19,7 @@ int main(){
                 realloc(string,sizeof(char)*strlen(string)+1);
                 p++;
             }
+            
         *p = '&';
         realloc(string,sizeof(char)*strlen(string)+1);
         p++;
