@@ -2,8 +2,10 @@
 
 int main(){
 
-    // Quando nao se atribui nenhum valor ao ponteiro, ele é iniciado em NULL.
+    // Inicializar ponteiros em NULL para evitar segmentation fault.
 
+    // Fazem a mesma coisa:
+    // Na memoria, é sequencial
 
     // Ex 1:
 

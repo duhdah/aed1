@@ -7,7 +7,12 @@ int main(){
     m = &count; // recebe endereço de count
     printf("Informe count =");
     scanf("%d",&count); //armazena no endereço de count
+    
     q = *m; // recebe valor apontado por m
+    // m tem um endereço de memoria
+    // *m pula para esse endereço de memoria
+    // q recebe o valor nesse endereço de memoria
+    
     printf("m=%p\n",m); // %p imprime ponteiro (endereço apontado)
     printf("q=%d\n",q);
     printf("m aponta para %d\n\n",*m); // conteudo apontado por m

@@ -32,4 +32,15 @@ int main(){
         // 'm' recebe o endereço da variável 'count'.
         // 'q' recebe o valor armazenado no enderçeo de 'm'.
 
+        int *num3 = 6;
+        // Primeiro cria, depois atribui.
+        // * -> Criando ponteiro
+        // num3 aponta para 6.
+
+        num3 = &num;
+        // Pega o endereço de num, que é 3.
+        
+        // OBS: Ordem de prioridade -> Lê primeiro à direita.
+        // Pesquisar ordem de prioridade dos parênteses.
+        // Slide 15 da aula de Revisão 2.
 }
