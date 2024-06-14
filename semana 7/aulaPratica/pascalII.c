@@ -11,7 +11,8 @@ Link: https://leetcode.com/problems/pascals-triangle-ii/description/
 
 */
 
-// Não funcionou no LeetCode, mas o código imprime corretamente os valores da linha.
+// Funcionou (0 ms)
+// OBS: Esse é o código completo que fiz pra testar no VSCode.
 
 int* getRow(int rowIndex, int* returnSize);
 
@@ -30,6 +31,9 @@ int main(){
 
 int* getRow(int rowIndex, int* returnSize) {
     int **rows;
+    // OBS: No LeetCode, precisa ter a seguinte linha de codigo para funcionar:
+    // *return size = rowIndex + 1;
+    // Nesse codigo, não cheguei a usar returnSize, mas o LeetCode usa para saber qual o tamanho da linha do output.
     rows = (int **)malloc(sizeof(int**)*(rowIndex+1));
     for(int i = 0; i <= rowIndex; i++){
         rows[i] = (int*)malloc((rowIndex+1)*sizeof(int *));
