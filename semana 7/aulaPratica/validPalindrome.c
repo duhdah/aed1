@@ -6,6 +6,8 @@
 char *arruma(char *entrada);
 bool isPalindrome(char* s);
 
+// Codigo completo:
+
 int main(){
     bool palindromo;
     char *entrada;
