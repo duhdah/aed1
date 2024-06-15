@@ -11,29 +11,37 @@ Link: https://leetcode.com/problems/valid-palindrome/description/
 
 */
 
-// Não funcionou em alguns casos do LeetCode, mas testando os mesmos casos com o codigo completo (validPalindrome.c), funciona.
+// Como o codigo que fiz antes desse não funcionou no LeetCode, apesar de funcionar fora dele, busquei outra lógica pra poder submeter.
+// Funcionou (2 ms)
 
-char *arruma(char *entrada);
-
-bool isPalindrome(char* s) {
-    int tam = strlen(s);
-    s = arruma(s);
-    for(int i = 0; i< tam/2; i++){
-        if(s[i] != s[tam-1-i]) return false;
+int alphanumeric(char c);
+int minuscula(char c);
+int isPalindrome(char* s) {
+    int left, right; // percorre a palavra dos dois lados ao mesmo tempo
+    right = strlen(s) - 1;
+    left = 0;
+    while (left < right){ // se left == right, eh palindromo
+        if(alphanumeric(s[left])){
+            if(alphanumeric(s[right])){
+                if (minuscula(s[left]) != minuscula(s[right])){
+                    return 0;
+                }
+                left++;
+                right--;
+            }
+            else 
+                right--;
+        }
+        else 
+            left++;
     }
-    return true;
+    return (1);
+}
+ 
+int alphanumeric(char c){ // verifica se é numero ou letra
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'); 
 }
 
-char *arruma(char *entrada){
-    char *nova;
-    int tamNova = 0;
-    nova = (char *)malloc(sizeof(char) * strlen(entrada));
-    for(int i = 0; i < strlen(entrada); i++){
-        if(entrada[i] >= 'A' && entrada[i] <= 'Z') entrada[i] = entrada[i] + 32;
-        if(entrada[i] >= 'a' && entrada[i] <= 'z'){
-            nova[tamNova] = entrada[i];
-            tamNova++;
-        }
-    }
-    return nova;
+int minuscula(char c){ // deixa as letras minusculas pra comparar elas 
+    return (c >= 'A' && c <= 'Z') ? c + 32 : c;
 }
