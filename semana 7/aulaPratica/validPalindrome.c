@@ -6,7 +6,8 @@
 char *arruma(char *entrada);
 bool isPalindrome(char* s);
 
-// Codigo completo:
+// Não funcionou em alguns casos do LeetCode, mas testando os mesmos casos no VSCode com o codigo completo, funciona.
+
 
 int main(){
     bool palindromo;
