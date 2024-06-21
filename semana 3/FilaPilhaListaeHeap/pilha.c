@@ -5,7 +5,15 @@
     ESTRUTURAS DE DADOS: Regras para armazenamento e acesso a informações.
     - São usados mecanismos de abstração para simplificar o acesso do usuário. (Tipos abstratos de dados)
     - Têm interfaces, como um interruptor ou um carro.
+    - O mais importante da disciplina é saber escolher a estrutura de dados.
 
+    Nomes para as funções nas estruturas de dados (Mais fácil de trabalhar)
+    -> RESET (Iniciar a ED) -> cria o espaço na memória
+    -> PUSH (Inserir elemento)
+    -> POP (Remover elemento)
+    -> EMPTY (Verifica se a ED está vazia)
+    -> CLEAR (Apaga todos os elementos) -> limpa o espaço na memória
+    
     Exemplo: Lavar pratos. Sempre coloca em cima e remove de cima (Pilha!)
     - As alterações em textos são feitas em pilha (botão undo).
     - São desfeitas em ordem, da ultima a ter sido feita até a primeira.
@@ -14,10 +22,12 @@
     - Não precisa ser um vetor. Será uma pilha se seguirmos as regras da LIFO.
     - Parâmetros de uma pilha: Base, topo e limite.
     - As operações devem sincronizar com as variáveis referentes a pilha.
+    - Variáveis: Base, topo, limite.
+    - Existe a pilha estática (que usa um tamanho constante da memória) e a dinâmica (com alocação de memória dinâmica).
 
     Pré-condições para operações de pilhas:
     - PUSH: A pilha deve ter espaço disponível para a inserção de novos elementos.
-    - POP: A pilha não pode estar vazia.
+    - POP: A pilha não pode estar vazia.   
 
 */
 
