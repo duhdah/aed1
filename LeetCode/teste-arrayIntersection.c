@@ -1,3 +1,14 @@
+/*
+
+Given two integer arrays nums1 and nums2, return an array of their intersection. 
+Each element in the result must be unique and you may return the result in any order.
+
+Link: https://leetcode.com/problems/intersection-of-two-arrays/description/
+
+*/
+
+// Versão com código completo para teste:
+
 #include <stdio.h>
 #include <stdlib.h>
 
