@@ -1,4 +1,7 @@
 
+// OBS: Esse código foi feito em aula e foi aceito pelo LeetCode.
+// As demais versões são o mesmo código, mas adaptado conforme as normas de organização de código do DOOM 3.
+
 bool lemonadeChange(int* bills, int billsSize){
 
     int num5 = 0, num10 = 0;
