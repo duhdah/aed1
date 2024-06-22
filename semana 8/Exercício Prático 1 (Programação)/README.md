@@ -20,7 +20,7 @@ A lógica usada foi a de contar quantas notas de 5, 10 e 20 reais eram obtidas.
 Se, ao receber 10 ou 20 reais, não houvessem notas suficientes para o troco, a função retornava 'falso'.
 Caso contrário, o retorno era verdadeiro.
 
-Ainda em aula, percebi que o número de notas de 20 não importava, então utilizei apenas as variáveis num5 e num 10,
+Ainda em aula, percebi que o número de notas de 20 não importava, então utilizei apenas as variáveis num5 e num10,
 que correspondem ao número de notas de 5 e de 10 disponíveis, respectivamente.
 
 O código foi aceito pelo LeetCode em aula, tendo o runtime e a memória usada variando conforme as submissões.
