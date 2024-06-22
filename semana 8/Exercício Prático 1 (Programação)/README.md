@@ -32,7 +32,9 @@ O código foi aceito pelo LeetCode em aula, tendo o runtime e a memória usada v
 
 Já que o código funcionou em aula, não precisei fazer muito em casa. 
 Ajustei para o padrão do DOOM 3 da melhor forma que consegui.
-Busquei outras formas de resolver o problema para buscar algo mais otimizado, mas todas as maneiras eram muito semelhantes.
+Como o runtime e a memória usada por submissões distintas do mesmo código variavam, foi difícil entender se as outras soluções eram mais
+eficentes mesmo ou se era apenas o LeetCode variando os dados. Por isso, mantive o meu código do jeito que escrevi, já que todas as
+outras soluções que vi usavam a mesma lógica de maneiras sutilmente diferentes.
 
 ## Casos de Teste
 
@@ -57,3 +59,4 @@ Output: true
 ## Valgrind
 
 Nenhum erro foi encontrado.
+(O que era esperado, já que a alocação dinâmica não foi usada)
