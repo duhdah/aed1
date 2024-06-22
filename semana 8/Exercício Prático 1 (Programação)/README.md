@@ -39,16 +39,19 @@ Busquei outras formas de resolver o problema para buscar algo mais otimizado, ma
 ### Teste 1 (LeetCode)
 
 Entrada: bills [5,5,5,10,20]
+
 Saída: true
 
 ### Teste 2  (LeetCode)
 
 Input: bills = [5,5,10,10,20]
+
 Output: false
 
 ### Teste 3
 
 Input: bills = [5]
+
 Output: true
 
 ## Valgrind
