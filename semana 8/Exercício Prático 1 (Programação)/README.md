@@ -51,6 +51,6 @@ Output: false
 Input: bills = [5]
 Output: true
 
-### Valgrind
+## Valgrind
 
 Nenhum erro foi encontrado.
