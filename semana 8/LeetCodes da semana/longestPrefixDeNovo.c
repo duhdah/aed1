@@ -2,9 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-/*
-Já tinha feito esse no Leet na semana passada, mas resolvi fazer o código completo para debugar e compreendê-lo melhor.
-*/
+
+//Já tinha feito esse no Leet na semana passada, mas resolvi fazer o código completo para debugar e compreendê-lo melhor.
 
 char* longestCommonPrefix(char** strs, int strsSize);
 
