@@ -36,7 +36,15 @@ Passei bastante tempo tentando me acertar sobre qual formato do código deveria 
 Infelizmente, não consegui, mas me esforcei bastante e acredito que pelo menos na lógica, eu estava indo no caminho certo.
 
 Print da minha última submissão:
-![image](https://github.com/user-attachments/assets/12dec7c7-307c-448f-a56b-942cb08c2365)
+
+No teste que aparece, faltou somar um x, ou seja, não deve ter lido um 'ab' corretamente.
+
+![image](https://github.com/user-attachments/assets/8b92d84a-f6a1-448e-8544-56c6852b99db)
+
+Uma hipótese que pensei em aula foi que o problema estava dando na hora de remover 'aabb', pois fiz o teste manual de como 'ab' e 'ba' seriam retirados dessa string e percebi que essa sequência parecia um problema.
+
+![image](https://github.com/user-attachments/assets/4cca26ea-679a-4141-ac8f-152586636316)
+
 
 ## Código feito em casa
 
