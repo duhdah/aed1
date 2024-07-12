@@ -22,9 +22,12 @@ Return the maximum points you can gain after applying the above operations on s.
 
 * Lógica do código desenvolvido
   
-A ideia foi a de que eu precisava identificar tanto a ocorrência de 'ab' e de 'ba' e priorizar uma delas conforme x ou y, sendo o foco no que representa o valor mais alto.
-A parte difícil foi implementar isso de maneira correta, pois nos testes costumava faltar contabilzar um deles.
-Fiz várias tentativas em aula. Tentei implementar com pilha, pois parecia a estrutura de dados mais adequada, mas não soube como lidar com o código e decidi tentar sem usar as estruturas de dados, apenas modificando a string com uma função e buscando as substrings com outra função.
+A minha ideia foi que eu precisava identificar tanto a ocorrência de 'ab' e de 'ba' e priorizar uma delas conforme x ou y, sendo o foco no que representa o valor mais alto.
+A parte difícil foi implementar isso de maneira correta, pois nos testes costumava faltar contabilzar algum deles.
+
+Fiz várias tentativas em aula (fiquei a tarde inteira no lab!). No começo, tentei implementar com pilha, pois parecia a estrutura de dados mais adequada, mas não soube como lidar com o código e decidi tentar sem usar as estruturas de dados, apenas modificando a string com uma função e buscando as substrings com outra função.
+
+OBS: No arquivo codigoFeitoEmAula.c está a minha última tentativa e também todas as outras formas de tentar resolver e funções que escrevi. Fiquei com a que mais deu certo. As outras, não consegui desenvolver tão bem quanto.
 
 * Submissão no LeetCode
 
@@ -32,35 +35,32 @@ O código não foi aceito no LeetCode, tendo passado em 46 dos 76 casos de teste
 Passei bastante tempo tentando me acertar sobre qual formato do código deveria focar em desenvolver e depois o resto da tarde tentando resolver esses casos que não deram certo.
 Infelizmente, não consegui, mas me esforcei bastante e acredito que pelo menos na lógica, eu estava indo no caminho certo.
 
+Print da minha última submissão:
+![image](https://github.com/user-attachments/assets/12dec7c7-307c-448f-a56b-942cb08c2365)
+
 ## Código feito em casa
 
-Já que o código funcionou em aula, não precisei fazer muito em casa. 
-Ajustei para o padrão do DOOM 3 da melhor forma que consegui.
-Como o runtime e a memória usada por submissões distintas do mesmo código variavam, foi difícil entender se as outras soluções eram mais
-eficentes mesmo ou se era apenas o LeetCode variando os dados. Por isso, mantive o meu código do jeito que escrevi, já que todas as
-outras soluções que vi usavam a mesma lógica de maneiras sutilmente diferentes.
+
+
 
 ## Casos de Teste
 
 ### Teste 1 (LeetCode)
 
-Entrada: bills [5,5,5,10,20]
+Entrada:
 
-Saída: true
+Saída:
 
 ### Teste 2  (LeetCode)
 
-Input: bills = [5,5,10,10,20]
+Entrada:
 
-Output: false
+Saída:
 
 ### Teste 3
 
-Input: bills = [5]
+Entrada:
 
-Output: true
+Saída:
 
 ## Valgrind
-
-Nenhum erro foi encontrado.
-(O que era esperado, já que a alocação dinâmica não foi usada)
