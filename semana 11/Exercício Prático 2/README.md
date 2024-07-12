@@ -1,32 +1,36 @@
-# Exercício Prático 1: Programação
+# Exercício Prático 2
 
 ## Eduarda Pereira Medeiros (M5)
 
 ## Enunciado 
 
-860. Lemonade Change
+1717. Maximum Score From Removing Substrings
 
-At a lemonade stand, each lemonade costs $5. Customers are standing in a queue to buy from you and order one at a time (in the order specified by bills). Each customer will only buy one lemonade and pay with either a $5, $10, or $20 bill. You must provide the correct change to each customer so that the net transaction is that the customer pays $5.
+You are given a string s and two integers x and y. You can perform two types of operations any number of times.
 
-Note that you do not have any change in hand at first.
+Remove substring "ab" and gain x points.
+For example, when removing "ab" from "cabxbae" it becomes "cxbae".
 
-Given an integer array bills where bills[i] is the bill the ith customer pays, return true if you can provide every customer with the correct change, or false otherwise.
+Remove substring "ba" and gain y points.
+For example, when removing "ba" from "cabxbae" it becomes "cabxe".
+
+Return the maximum points you can gain after applying the above operations on s.
 
 Link do problema: https://leetcode.com/problems/lemonade-change/description/
 
 ## Código feito em aula
 
-A lógica usada foi a de contar quantas notas de 5, 10 e 20 reais eram obtidas.
-Se, ao receber 10 ou 20 reais, não houvessem notas suficientes para o troco, a função retornava 'falso'.
-Caso contrário, o retorno era verdadeiro.
+* Lógica do código desenvolvido
+  
+A ideia foi a de que eu precisava identificar tanto a ocorrência de 'ab' e de 'ba' e priorizar uma delas conforme x ou y, sendo o foco no que representa o valor mais alto.
+A parte difícil foi implementar isso de maneira correta, pois nos testes costumava faltar contabilzar um deles.
+Fiz várias tentativas em aula. Tentei implementar com pilha, pois parecia a estrutura de dados mais adequada, mas não soube como lidar com o código e decidi tentar sem usar as estruturas de dados, apenas modificando a string com uma função e buscando as substrings com outra função.
 
-Ainda em aula, percebi que o número de notas de 20 não importava, então utilizei apenas as variáveis num5 e num10,
-que correspondem ao número de notas de 5 e de 10 disponíveis, respectivamente.
+* Submissão no LeetCode
 
-O código foi aceito pelo LeetCode em aula, tendo o runtime e a memória usada variando conforme as submissões.
-
-* Como o tamanho de bills é especificado como maior que 1, o código não se preocupa com a entrada de valores menores que 1.
-* Da mesma forma, é considerado que apenas notas de 5, 10 e 20 serão usadas.
+O código não foi aceito no LeetCode, tendo passado em 46 dos 76 casos de teste.
+Passei bastante tempo tentando me acertar sobre qual formato do código deveria focar em desenvolver e depois o resto da tarde tentando resolver esses casos que não deram certo.
+Infelizmente, não consegui, mas me esforcei bastante e acredito que pelo menos na lógica, eu estava indo no caminho certo.
 
 ## Código feito em casa
 
