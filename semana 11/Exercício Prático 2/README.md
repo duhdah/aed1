@@ -48,27 +48,36 @@ Uma hipótese que pensei em aula foi que o problema estava dando na hora de remo
 
 ## Código feito em casa
 
+Li o editorial do exercício e entendi as soluções propostas. Antes de partir para uma nova abordagem, no entando, pedi para o Chat GPT corrigir meu código e, apesar de ele funcionar para mais casos (55/76), realmente não funciona para entradas maiores: dá time limit exceeded. Deixei o código na pasta como melhoradoPeloGPT.c para constar.
 
+Portanto, decidi tentar implementar com pilhas e com a versão mais parecida com a minha, que também modifica a string em si, para ter uma noção melhor de como eu poderia ter feito.
 
+Fiz das duas maneiras e coloquei ambas no código que vou entregar como final. No entanto, vou considerar a solução principal a feita com pilhas, pois fez mais sentido para mim depois de entender como elas funcionam e também porque imagino que a implementação de uma pilha tenha sido o objetivo do trabalho.
+
+A versão com pilhas demonstrou um desempenho melhor do que a com modificação de strings.
+
+O arquivo **codigoCorrigido.c** corresponde ao codigo que estou entregando como a minha solução do trabalho, sendo a parte comentada apenas adicional. 
 
 ## Casos de Teste
 
-### Teste 1 (LeetCode)
+### Teste 1
 
-Entrada:
+Entrada: s = "cdbcbbaaabab", x = 4, y = 5
 
-Saída:
+Saída: 19
 
-### Teste 2  (LeetCode)
+### Teste 2
 
-Entrada:
+Entrada: s = "aabbaaxybbaabb", x = 5, y = 4
 
-Saída:
+Saída: 20
 
 ### Teste 3
 
-Entrada:
+Entrada: s = "aabbabkbbbfvybssbtaobaaaabataaadabbbmakgabbaoapbbbbobaabvqhbbzbbkapabaavbbeghacabamdpaaqbqabbjbababmbakbaabajabasaabbwabrbbaabbafubayaazbbbaababbaaha", x = 1926, y = 4320
 
-Saída:
+Saída: 112374
 
 ## Valgrind
+
+Nenhum memory leak foi apontado nos 3 testes.
