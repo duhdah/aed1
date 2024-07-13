@@ -56,7 +56,7 @@ Fiz das duas maneiras e coloquei ambas no código que vou entregar como final. N
 
 A versão com pilhas demonstrou um desempenho melhor do que a com modificação de strings.
 
-O arquivo **codigoCorrigidoEmC.c** corresponde ao codigo que estou entregando como a minha solução do trabalho, sendo a parte comentada apenas adicional. 
+O arquivo **codigoFinalFeitoEmCasa.c** corresponde ao codigo que estou entregando como a minha solução do trabalho, sendo a parte comentada apenas adicional. (Mudei o nome que estava no vídeo pra ficar mais claro qual é o meu código final)
 
 Submissão do primeiro código (Pilhas):
 
