@@ -1,5 +1,5 @@
 
-// Tentativa principal:
+// CÓDIGO PRINCIPAL:
 // Passou 45/76 casos de teste
 
 char *removeSubstring(char *s, int indice);
@@ -108,7 +108,8 @@ int encontraSubstring(char *s){
 }
 
 
-// OUTRAS TENTATIVAS FEITAS EM AULA! 
+// OUTRAS TENTATIVAS FEITAS EM AULA:
+// A melhor foi a primeira. As outras podem estar incompletas.
 
 // Tentativa 1: "Remover" os caracteres tornando os 'z' (nem a, nem b)
 
