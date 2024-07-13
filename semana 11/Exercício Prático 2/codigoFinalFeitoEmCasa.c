@@ -6,7 +6,7 @@
 =============================================================================
 MaximumGain
 
-    A funcao encontra substrings 'ab' ou 'ba' em uma ordem definida pela pontuação
+    A função encontra substrings 'ab' ou 'ba' em uma ordem definida pela pontuação
     que cada uma vale e remove-as de modo a maximizar a pontuação obtida.
 =============================================================================
 */
@@ -82,7 +82,7 @@ int MaximumGain ( char* s, int x, int y );
 =============================================================================
 MaximumGain
 
-    A funcao encontra substrings 'ab' ou 'ba' em uma ordem definida pela pontuação
+    A função encontra substrings 'ab' ou 'ba' em uma ordem definida pela pontuação
     que cada uma vale e remove-as de modo a maximizar a pontuação obtida.
 =============================================================================
 */
@@ -112,7 +112,7 @@ int MaximumGain ( char* s, int x, int y ) {
 =============================================================================
 RemoveSubstring
 
-    A funcao remove uma das substrings 'ab' ou 'ba' passada como parâmetro da
+    A função remove uma das substrings 'ab' ou 'ba' passada como parâmetro da
     string e contabiliza os pontos conforme a remoção das ocorrências.
 =============================================================================
 */
