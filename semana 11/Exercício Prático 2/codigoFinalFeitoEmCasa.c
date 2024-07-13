@@ -1,6 +1,7 @@
 
 // 1º código funcional: Usando pilha! 
 // Funcionou com 28 ms de runtime e 12.82 MB
+// Complexidade: O(n)
 
 /*
 =============================================================================
@@ -14,8 +15,8 @@ MaximumGain
 int MaximumGain ( char* s, int x, int y ) {
 
     int pontos = 0;
-    int tam = strlen ( s ) ;
-    char* pilha = ( char * ) malloc ( tam + 1 ) ;
+    int tam = strlen ( s );
+    char* pilha = ( char * ) malloc ( tam + 1 );
     int topo = -1;
 
     if ( x > y ) {
@@ -72,8 +73,14 @@ int MaximumGain ( char* s, int x, int y ) {
 
 
 /*
+
+
+
 // 2º código funcional (Extra): Versão modificando a string, sem usar pilha
 // Funcionou com 62 ms de runtime e 11.14MB de memória
+// Complexidade: O(n)
+
+
 
 int RemoveSubstring ( char* string, const char* substring, int pontosPorSubstring );
 int MaximumGain ( char* s, int x, int y );
