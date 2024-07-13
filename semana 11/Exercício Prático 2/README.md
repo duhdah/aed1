@@ -16,7 +16,7 @@ For example, when removing "ba" from "cabxbae" it becomes "cabxe".
 
 Return the maximum points you can gain after applying the above operations on s.
 
-**Link do problema: https://leetcode.com/problems/lemonade-change/description/**
+**Link do problema: https://leetcode.com/problems/maximum-score-from-removing-substrings/description/**
 
 ## Código feito em aula
 
