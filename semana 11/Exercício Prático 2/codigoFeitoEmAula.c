@@ -107,7 +107,7 @@ int encontraSubstring(char *s){
     return 0;
 }
 
-
+/*
 // OUTRAS TENTATIVAS FEITAS EM AULA:
 // A melhor foi a primeira. As outras podem estar incompletas.
 
@@ -441,3 +441,4 @@ int EncontraAb(char *s){
     }
     return -1;
 }
+*/
