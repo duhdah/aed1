@@ -56,7 +56,15 @@ Fiz das duas maneiras e coloquei ambas no código que vou entregar como final. N
 
 A versão com pilhas demonstrou um desempenho melhor do que a com modificação de strings.
 
-O arquivo **codigoCorrigido.c** corresponde ao codigo que estou entregando como a minha solução do trabalho, sendo a parte comentada apenas adicional. 
+O arquivo **codigoCorrigidoEmC.c** corresponde ao codigo que estou entregando como a minha solução do trabalho, sendo a parte comentada apenas adicional. 
+
+Submissão do primeiro código (Pilhas):
+
+![image](https://github.com/user-attachments/assets/e20e51d9-6439-4edc-bd0f-666e9ecfc379)
+
+Submissão do segundo código (Modificação de strings):
+
+![image](https://github.com/user-attachments/assets/478bc7fa-bc77-41ec-98cf-abf89cde13f2)
 
 ## Casos de Teste
 
