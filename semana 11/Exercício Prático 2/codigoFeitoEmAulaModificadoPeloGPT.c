@@ -3,7 +3,7 @@ char *removeSubstring(char *s, int indice);
 int encontraSubstring(char *s, const char* substr);
 int maximumGain(char* s, int x, int y);
 
-// Esse é o código feito em aula, mas melhorado com o Chat GPT para obter melhor desempenho.
+// Esse é o código feito em aula, mas melhorado com o Chat GPT em casa para obter melhor desempenho.
 // Passou em 55 testes. Nos outros 21, deu Time Limit Exceeded. Portanto, procurei soluções melhores.
 
 int maximumGain(char* s, int x, int y) {
