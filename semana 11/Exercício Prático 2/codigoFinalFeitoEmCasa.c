@@ -71,7 +71,7 @@ int MaximumGain ( char* s, int x, int y ) {
 
 
 
-
+/*
 // 2º código funcional (Extra): Versão modificando a string, sem usar pilha
 // Funcionou com 62 ms de runtime e 11.14MB de memória
 
@@ -87,6 +87,7 @@ MaximumGain
 =============================================================================
 */
 
+/*
 int MaximumGain ( char* s, int x, int y ) {
 
     int totalDePontos = 0;
@@ -116,6 +117,7 @@ RemoveSubstring
 =============================================================================
 */
 
+/*
 int RemoveSubstring ( char* string, const char* substring, int pontosPorSubstring )  {
 
     int totalPoints = 0;
@@ -139,3 +141,5 @@ int RemoveSubstring ( char* string, const char* substring, int pontosPorSubstrin
     return totalPoints;
 
 }
+
+*/
