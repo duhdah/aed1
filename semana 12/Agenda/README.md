@@ -6,7 +6,7 @@ Desenvolver uma agenda sem alocar variáveis, utilizando apenas *pBuffer e uma l
 ## Etapas do desenvolvimento
 ### Compreensão do ponteiro do tipo void
 
-Comecei a trabalhar na agenda 3 semanas antes da data de entrega (na Semana 9), fazendo pequenos códigos para ler dados como inteiros e strings no pBuffer. Sabia que o trabalho era difícil, portanto, não quis deixar para última hora e tentei começar pelo menos a compreendar a ideia logo. Anotei no começo do código o que cada posição do pBuffer guardava para identificar o que eu estava fazendo. O meu grande problema na execução do trabalho acabou sendo a interpretação. Fiz diversas tentativas porque cada vez, percebia que não estava seguindo corretamente a proposta por ter entendido mal e tive que refazer meu código muitas vezes.
+Comecei a trabalhar na agenda 3 semanas antes da data de entrega (na semana 9), fazendo pequenos códigos para ler dados como inteiros e strings no pBuffer. Sabia que o trabalho era difícil, portanto, não quis deixar para última hora e tentei começar pelo menos a compreendar a ideia logo. Anotei no começo do código o que cada posição do pBuffer guardava para identificar o que eu estava fazendo. O meu grande problema na execução do trabalho acabou sendo a interpretação. Fiz diversas tentativas porque cada vez, percebia que não estava seguindo corretamente a proposta por ter entendido mal e tive que refazer meu código muitas vezes.
 
 ### Tentativa 1
 
