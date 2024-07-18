@@ -68,6 +68,8 @@ Eu tentei solucionar isso fazendo uma função BuscarPessoa que não alocasse um
 
 O código final é o Agenda.c
 
+O código AgendaComDefine mostra, a mesma agenda, mas usando define para tornar o código mais legível.
+
 O código AgendaComComentarios.c mostra a mesma agenda, mas com comentários para explicar a lógica de cada parte.
 
 O código buscarPessoaArrumado.c (na pasta Tentativas) mostra a função que fiz para arrumar a minha implementação ruim da BuscarPessoa no meu código final, mas que não consegui fazer funcionar por ter interferido com outras partes do código.
