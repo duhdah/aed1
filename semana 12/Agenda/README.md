@@ -63,6 +63,12 @@ Nesse trabalho, o Valgrind foi um grande desafio. Como eu mudei tantas vezes a m
 
 Eu tentei solucionar isso fazendo uma função BuscarPessoa que não alocasse um novo nodo e usasse apenas os ponteiros e consegui, porém, a função RemoverPessoas parou de funcionar. Também tentei guardar um espaço no pBuffer para um nodo, mas isso acabou gerando mais problemas no código. Nenhuma dessas coisas funcionou, o que é uma pena, já que o erro está bem óbvio. O problema é que dar free depois de usar o nodo altera o conteúdo da lista, o que é prejudicial para o meu código. No final, acabei desistindo e deixando assim, tanto por falta de tempo quanto por cansaço.
 
+O código final é o Agenda.c
+
+O código AgendaComComentarios.c mostra a mesma agenda, mas com comentários para explicar a lógica de cada parte.
+
+O código buscarPessoaArrumado.c mostra a função que fiz para arrumar a minha implementação ruim da BuscarPessoa no meu código final, mas que não consegui fazer funcionar por ter interferido com outras partes do código.
+
 ## Teste
 
 Usei a seguinte entrada para testar as funções de listar, buscar pessoas, remover nas extremidades da fila e no meio e adicionar mais pessoas:
