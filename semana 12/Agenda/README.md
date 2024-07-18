@@ -47,12 +47,13 @@ Como esse foi o melhor código que consegui fazer, explicarei melhor como ele fu
 * pBuffer usa 53 bytes para armazenar as "variáveis" que precisei, o início e o fim da fila da agenda e início e o fim da fila auxiliar para poder dar free nela.
 
 No código, são implementadas 6 funções: 
-* void AdicionarPessoa():
-* void RemoverPessoa():
-* void *BuscarPessoa():
-* void ListarPessoas():
-* void LimparAgenda():
-* void LimparAuxiliar():
+* void AdicionarPessoa();
+* void RemoverPessoa();
+* void *BuscarPessoa();
+* void ListarPessoas();
+* void LimparAgenda();
+* void LimparAuxiliar();
+  
 Cada uma delas tem um header no código que explica melhor o que faz.
 
 O meu maior problema acabou sendo a BuscarAgenda, como descrito no tópico a seguir sobre o Valgrind.
