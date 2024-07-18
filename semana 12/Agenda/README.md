@@ -40,8 +40,6 @@ Fiz isso conscientemente porque percebi que se tirasse os elementos do início d
 
 (Imagem)
 
-Nessa etapa, corrigi um erro que persistia desde o começo do meu trabalho: eu estava alocando 4 bytes para ponteiros do tipo char. O código funcionava no VSCode assim, então não me dei conta, mas quando o Valgrind começou a dar erro, percebi isso e arrumei.
-
 Como esse foi o melhor código que consegui fazer, explicarei melhor como ele funciona:
 * No começo do código, está explicado quantos bytes tem pBuffer e cada "nodo" de pessoa da agenda 
 * Cada "nodo" da agenda tem 60 bytes compostos da seguinte forma: 20 bytes (Nome) + 4 bytes (Idade) + 20 bytes (Email) + 8 bytes (Ponteiro para a pessoa anterior) + 8 bytes (Ponteiro para a próxima pessoa)
@@ -60,3 +58,47 @@ No código, são implementadas 6 funções:
 # Valgrind
 
 Nesse trabalho, o Valgrind foi um grande desafio. Como eu mudei tantas vezes a minha lógica nesse processo, no final, eu fiquei muito confusa e já mal conseguia arrumar o meu código pra pensar em como corrigir os erros. Identifiquei que havia memory leak na busca, pois eu estava alocando novos nodos para usar a lógica da fila auxiliar e eles não estavam sendo proporiamente desalocados, então a cada pessoa que eu passava, 60 bytes eram perdidos.
+
+Eu tentei solucionar isso fazendo uma função BuscarPessoa que não alocasse um novo nodo e usasse apenas os ponteiros e consegui, porém, a função RemoverPessoas parou de funcionar. Também tentei guardar um espaço no pBuffer para um nodo, mas isso acabou gerando mais problemas no código. Nenhuma dessas coisas funcionou, o que é uma pena, já que o erro está bem óbvio. O problema é que dar free depois de usar o nodo altera o conteúdo da lista, o que é prejudicial para o meu código. No final, acabei desistindo e deixando assim, tanto por falta de tempo quanto por cansaço.
+
+# Teste
+
+Usei a seguinte entrada para testar as funções de listar, buscar pessoas, remover nas extremidades da fila e no meio e adicionar mais pessoas:
+
+1
+Gabriel
+25
+gabriel@gmail.com
+1
+Amanda
+31
+amanda@gmail.com
+1
+Bruna
+43
+bruna@gmail.com
+1
+Zeca
+74
+zeca@gmail.com
+1
+Carlos
+65
+carlos@gmail.com
+1
+Rogerio
+34
+rogerio@gmail.com
+1
+Fabio
+17
+fabio@gmail.com
+1
+Renata
+40
+renata@gmail.com
+1
+Iara
+23
+iara@gmail.com
+
