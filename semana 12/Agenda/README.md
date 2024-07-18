@@ -30,7 +30,7 @@ O código resultante do mau uso do pAgenda está como tentativa2.c na pasta das 
 
 Depois dessa descoberta, reformulei o código para ter apenas o pBuffer declarado. Usei posições do pBuffer para armazenar onde a agenda terminava e começava. Consegui implementar a agenda, no entanto, após conseguir fazer funcionar, tive uma conversa com alguns colegas e me dei conta que eu estava considerando que usar heap era inserir na ordem alfabética, pois no enunciado diz que a inserção deve ser em heap. O resto do código estava manuseando com os ponteiros da lista, ou seja, na hora de buscar e remover pessoas, não estava seguindo a regra da fila de que preciso tirar no início para poder acessar alguém que estava no meio. Novamente, tive que modificar a minha implementação.
 
-O código que implementa a agenda sem seguir corretamente as regras da heap está como tentaiva3.c na pasta das Tentativas.
+O código que implementa a agenda sem seguir corretamente as regras da heap está como tentativa3.c na pasta das Tentativas.
 
 ### Tentativa 4
 
@@ -53,9 +53,8 @@ No código, são implementadas 6 funções:
 * void LimparAgenda():
 * void LimparAuxiliar():
 Cada uma delas tem um header no código que explica melhor o que faz.
+
 O meu maior problema acabou sendo a BuscarAgenda, como descrito no tópico a seguir sobre o Valgrind.
-
-
 
 ## Valgrind
 
