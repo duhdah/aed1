@@ -38,6 +38,7 @@ Cheguei em um ponto onde acredito que tenha entendido, finamente, o que era pra 
 
 Fiz isso conscientemente porque percebi que se tirasse os elementos do início da fila principal, colocasse no início da auxiliar e tirasse do início dela novamente para colocar no início, manteria a ordem alfabética. Compreendo que o certo seria remover do início da fila original e inserir em ordem alfabética na auxiliar. No entanto, eu precisaria modificar a minha função adicionarPessoa para implementar isso e percebi que meu tempo já estava se esgotando mesmo usando as madrugadas pra tentar entregar um código legal. Optei por implementar algo que funcionasse. Deixo um desenho que fiz da lógica que usei nas funções de busca e lista para ter certeza de que funcionaria.
 
+<img src="[URL_DA_IMAGEM](https://github.com/user-attachments/assets/e5ed6a53-0ce8-4023-8eb6-77893f4016de)" width="300"/>
 ![pilha](https://github.com/user-attachments/assets/e5ed6a53-0ce8-4023-8eb6-77893f4016de)
 
 Como esse foi o melhor código que consegui fazer, explicarei melhor como ele funciona:
