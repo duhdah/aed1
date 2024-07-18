@@ -40,6 +40,9 @@ Fiz isso conscientemente porque percebi que se tirasse os elementos do início d
 
 ![pilha](https://github.com/user-attachments/assets/e5ed6a53-0ce8-4023-8eb6-77893f4016de)
 
+![image](https://github.com/user-attachments/assets/232f090b-d621-4b23-a1a1-6ff7560c74fd)
+
+
 Como esse foi o melhor código que consegui fazer, explicarei melhor como ele funciona:
 * No começo do código, está explicado quantos bytes tem pBuffer e cada "nodo" de pessoa da agenda:
 * Cada "nodo" da agenda tem 60 bytes compostos da seguinte forma: 20 bytes (Nome) + 4 bytes (Idade) + 20 bytes (Email) + 8 bytes (Ponteiro para a pessoa anterior) + 8 bytes (Ponteiro para a próxima pessoa)
