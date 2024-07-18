@@ -14,7 +14,7 @@ O meu grande problema na execução do trabalho acabou sendo a interpretação. 
 
 Na semana 10, tentei realmente colocar em prática a agenda. Usei como exemplo o exercício que fizemos lá na primeira semana e comecei tentando apenas armazenar as pessoas na agenda, sem me preocupar com os conceitos de heap e de lista para não me perder e ir aos poucos. 
 
-No entanto, estava tentando guardar o tamanho de cada nome e email no pBuffer, acreditando que não fazer isso seria fazer mal uso da memória e não poderia simplesmente alocar um valor maior para as strings. Isso acabou dificultando muito e não consegui ir adiante com esse modelo de agenda.
+No entanto, estava tentando guardar o tamanho de cada nome e email no pBuffer, acreditando que não fazer isso seria fazer mau uso da memória e não poderia simplesmente alocar um valor maior para as strings. Isso acabou dificultando muito e não consegui ir adiante com esse modelo de agenda.
 
 O código iniciado está como tentativa1.c na pasta das Tentativas.
 
