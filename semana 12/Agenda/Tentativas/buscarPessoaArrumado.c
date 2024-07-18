@@ -8,10 +8,21 @@ void *pBuffer;
 // 20 char (nome) + 1 int (idade) + 20 char (email) + 2 char *(next e prev)
 // Total em bytes: 20 + 4 + 20 + 8 + 8 = 60
 
+
+
+
 /*
+
+
+
 Nesse código, NÃO FUNCIONA A REMOVERPESSOAS.
 No entanto, o problema de memory leak causado pelo BuscarPessoa foi corrigido.
+
+
+
+
 */
+
 
 
 
