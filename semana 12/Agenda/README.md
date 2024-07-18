@@ -34,24 +34,26 @@ O código que implementa a agenda sem seguir corretamente as regras da heap est�
 
 ## Tentativa 4
 
-Cheguei em um ponto onde acredito que tenha entendido, finamente, o que era pra fazer. Foi desestimulante, porque gastei muito da minha energia fazendo coisas erradas. Fiz muitos códigos em cada etapa para corrigir erros e no final perceber que tinha feito errado. Mesmo assim, tentei implementar corretamente. O que eu fiz de errado aqui foi que na hora de passar para uma fila auxiliar para buscar e listar, eu usei a lógica semelhante à pilha, retirando e inserindo sempre de uma das pontas, e não de heap, para passar os dados da principal pra auxiliar e da auxiliar pra principal. 
+Cheguei em um ponto onde acredito que tenha entendido, finamente, o que era pra fazer. Foi desanimador, porque gastei muito da minha energia fazendo coisas erradas. Fiz muitos códigos em cada etapa para corrigir erros e no final perceber que tinha feito errado. Mesmo assim, tentei implementar corretamente. O que eu fiz de errado aqui foi que na hora de passar para uma fila auxiliar na função BuscarPessoa, eu usei a lógica semelhante à pilha, retirando e inserindo sempre de uma das pontas, e não de heap, para passar os dados da principal pra auxiliar e da auxiliar pra principal. 
 
 Fiz isso conscientemente porque percebi que se tirasse os elementos do início da fila principal, colocasse no início da auxiliar e tirasse do início dela novamente para colocar no início, manteria a ordem alfabética. Compreendo que o certo seria remover do início da fila original e inserir em ordem alfabética na auxiliar. No entanto, eu precisaria modificar a minha função adicionarPessoa para implementar isso e percebi que meu tempo já estava se esgotando mesmo usando as madrugadas pra tentar entregar um código legal. Optei por implementar algo que funcionasse. Deixo um desenho que fiz da lógica que usei nas funções de busca e lista para ter certeza de que funcionaria.
 
-(Imagem)
+![pilha](https://github.com/user-attachments/assets/e5ed6a53-0ce8-4023-8eb6-77893f4016de)
 
 Como esse foi o melhor código que consegui fazer, explicarei melhor como ele funciona:
-* No começo do código, está explicado quantos bytes tem pBuffer e cada "nodo" de pessoa da agenda 
+* No começo do código, está explicado quantos bytes tem pBuffer e cada "nodo" de pessoa da agenda:
 * Cada "nodo" da agenda tem 60 bytes compostos da seguinte forma: 20 bytes (Nome) + 4 bytes (Idade) + 20 bytes (Email) + 8 bytes (Ponteiro para a pessoa anterior) + 8 bytes (Ponteiro para a próxima pessoa)
 * pBuffer usa 53 bytes para armazenar as "variáveis" que precisei, o início e o fim da fila da agenda e início e o fim da fila auxiliar para poder dar free nela.
 
 No código, são implementadas 6 funções: 
-* void AdicionarPessoa(): Aloca 60 bytes, lê os dados da pessoa, percorre a agenda até encontrar a posição correta alfabeticamente para inserir 
+* void AdicionarPessoa():
 * void RemoverPessoa():
 * void *BuscarPessoa():
 * void ListarPessoas():
 * void LimparAgenda():
 * void LimparAuxiliar():
+Cada uma delas tem um header no código que explica melhor o que faz.
+O meu maior problema acabou sendo a BuscarAgenda, como descrito no tópico a seguir sobre o Valgrind.
 
 
 
