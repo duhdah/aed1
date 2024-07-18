@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+// É a mesma agenda, mas usa define pra ficar mais legível!
+
 #define caractere * ( char * ) ( pBuffer )
 #define entrada  * ( int * ) ( pBuffer + 1 )
 #define nPessoas  * ( int * ) ( pBuffer + 5 )
@@ -11,8 +13,6 @@
 #define stringBusca pBuffer + 29 
 #define inicioAuxiliar * ( void ** ) ( pBuffer + 37 )
 #define fimAuxiliar * ( void ** ) ( pBuffer + 45 )
-
-
 
 void *pBuffer;
 
@@ -48,7 +48,7 @@ int main ( ) {
     entrada = 0;
     nPessoas = 0; 
     inicioAgenda = NULL;
-    * ( void ** ) ( pBuffer + 37 ) = NULL; 
+    inicioAuxiliar = NULL; 
 
     while ( entrada != 5 ) {
         printf( "Escolha uma opcao:\n1) Adicionar pessoa\n2) Remover pessoa\n3) Buscar pessoa\n4) Listar pessoas\n5) Sair\nEntrada: " );
@@ -353,8 +353,8 @@ void ListarPessoas ( ) {
         return;
     }
 
-    * ( void ** ) ( pBuffer + 37 ) = NULL; 
-    * ( void ** ) ( pBuffer + 45 ) = NULL; 
+    inicioAuxiliar = NULL; 
+    fimAuxiliar = NULL; 
 
     while ( inicioAgenda != NULL ) {
 
@@ -374,24 +374,24 @@ void ListarPessoas ( ) {
 
         * ( int * ) (pBuffer + 5) -= 1;
 
-        if ( * ( void ** ) ( pBuffer + 37 ) == NULL ) { 
+        if ( inicioAuxiliar == NULL ) { 
 
-            * ( void ** ) ( pBuffer + 37 ) = atual; 
-            * ( void ** ) ( pBuffer + 45 ) = atual; 
+            inicioAuxiliar = atual; 
+            fimAuxiliar = atual; 
             * ( void ** ) ( atual + 44 ) = NULL;
             * ( void ** ) ( atual + 52 ) = NULL;
             
         } else {
 
-            * ( void ** ) ( * ( void ** ) ( pBuffer + 45 ) + 52 ) = atual;
-            * ( void ** ) ( atual + 44 ) = * ( void ** ) ( pBuffer + 45 ); 
+            * ( void ** ) ( fimAuxiliar + 52 ) = atual;
+            * ( void ** ) ( atual + 44 ) = fimAuxiliar; 
             * ( void ** ) ( atual + 52 ) = NULL;
-            * ( void ** ) ( pBuffer + 45 ) = atual;
+            fimAuxiliar = atual;
             
         }
     }
 
-    void *pessoaAtual = * ( void ** ) ( pBuffer + 37 );
+    void *pessoaAtual = inicioAuxiliar;
 
     while ( pessoaAtual != NULL ) {
 
@@ -419,8 +419,8 @@ void ListarPessoas ( ) {
 
     }
 
-    * ( void ** ) ( pBuffer + 37 ) = NULL;
-    * ( void ** ) ( pBuffer + 45 ) = NULL;
+    inicioAuxiliar = NULL;
+    fimAuxiliar = NULL;
 
 }
 
@@ -454,7 +454,7 @@ LimparAuxiliar
 ====================================================================================== */
 void LimparAuxiliar ( ) {
 
-    void *pessoaAtual = * ( void ** ) ( pBuffer + 37 );
+    void *pessoaAtual = inicioAuxiliar;
 
     while ( pessoaAtual != NULL ) {
         void *proximaPessoa = * ( void ** ) ( pessoaAtual + 52 );
@@ -462,7 +462,7 @@ void LimparAuxiliar ( ) {
         pessoaAtual = proximaPessoa;
     }
 
-    * ( void ** ) ( pBuffer + 37 ) = NULL;
-    * ( void ** ) ( pBuffer + 45 ) = NULL;
+    inicioAuxiliar = NULL;
+    fimAuxiliar = NULL;
 
 }
