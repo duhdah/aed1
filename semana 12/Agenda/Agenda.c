@@ -33,7 +33,7 @@ void LimparAuxiliar ( );
 int main ( ) {
 
     pBuffer = malloc ( 53 ); 
-    * (int * ) ( pBuffer + 1 ) = 0;
+    * ( int * ) ( pBuffer + 1 ) = 0;
     * ( int * ) ( pBuffer + 5 ) = 0; 
     * ( void ** ) ( pBuffer + 13 ) = NULL;
     * ( void ** ) ( pBuffer + 37 ) = NULL; 
