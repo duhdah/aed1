@@ -2,72 +2,94 @@
 #include <stdlib.h>
 #include <string.h>
 
+// É a mesma agenda, mas usa define pra ficar mais legível!
+
+#define CARACTERE * ( char * ) ( pBuffer )
+#define ENTRADA  * ( int * ) ( pBuffer + sizeof ( char ) )
+#define N_DE_PESSOAS  * ( int * ) ( pBuffer + sizeof ( char ) + sizeof ( int ) )
+#define INDICE * ( int * ) ( pBuffer + sizeof ( char ) + 2 * sizeof ( int ) )
+#define INICIO_DA_AGENDA * ( void ** ) ( pBuffer + sizeof ( char ) + 3 * sizeof ( int ) )
+#define FIM_DA_AGENDA * ( void ** ) ( pBuffer + sizeof ( char ) + 3 * sizeof ( int ) + sizeof ( void * ) )
+#define NOME_BUSCADO pBuffer + ( sizeof ( char ) + 3 * sizeof ( int ) + 2 * sizeof ( void * ) )
+#define INICIO_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 *sizeof(char) + 3 * sizeof(int) + 2 * sizeof ( void * ) )
+#define FIM_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 *sizeof ( char ) + 3 * sizeof(int) + 3 * sizeof ( void * ) )
+#define NODO_AUXILIAR pBuffer + ( 21 * sizeof(char) + 3 * sizeof ( int ) + 4 * sizeof ( void * ) )
+#define ANT ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) )
+#define PROX ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + sizeof ( char * ) )
+
 void *pBuffer;
 
-// Tamanho de um "nodo" de Pessoa:
-// 20 char (nome) + 1 int (idade) + 20 char (email) + 2 char *(next e prev)
-// Total em bytes: 20 + 4 + 20 + 8 + 8 = 60
-
-/*
-pBuffer[0] = getchar (char = 1 byte)  -> pBuffer                                       OK
-pBuffer[1] = ler entrada (int = 4 bytes)  -> pBuffer + 1                               OK
-pBuffer[2] = numero de pessoas na agenda (int = 4 bytes)  -> pBuffer + 5               OK
-pBuffer[3] = numero de letras em uma string (int = 4 bytes)  -> pBuffer + 9            OK
-pBuffer[4] = inicio da agenda (char * = 8 bytes) - > pBuffer + 13                      OK
-pBuffer[5] = fim da agenda (char * = 4 bytes) - > pBuffer + 21                         OK
-pBuffer[6] = le string de buscar (20 char = 20 bytes) - > pBuffer + 29                 OK
-pBuffer[7] = inicio da fila auxiliar (char * = 8 bytes) - > pBuffer + 37               OK
-pBuffer[8] = fim da fila auxiliar (char * = 8 bytes) - > pBuffer + 45                  OK
-
-TOTAL: 53 BYTES           
-
-*/
-
-void AdicionarPessoa ( );
+void AdicionarPessoa ( void *nodo);
 void RemoverPessoa ( );
-void *BuscarPessoa ( );
+void BuscarPessoa ( );
 void ListarPessoas ( );
 void LimparAgenda ( );
 void LimparAuxiliar ( );
 
 int main ( ) {
 
-    pBuffer = malloc ( 53 ); 
-    * ( int * ) ( pBuffer + 1 ) = 0;
-    * ( int * ) ( pBuffer + 5 ) = 0; 
-    * ( void ** ) ( pBuffer + 13 ) = NULL;
-    * ( void ** ) ( pBuffer + 37 ) = NULL; 
+    pBuffer = malloc ( sizeof(char) + 3 * sizeof(int) + 2 * sizeof(char *) + 20 * sizeof(char) + 2 * sizeof(char *) + 20 * sizeof(char) + sizeof(int) + 20 * sizeof(char) + 2 * sizeof(char *)); 
+    ENTRADA = 0;
+    N_DE_PESSOAS = 0; 
+    INICIO_DA_AGENDA = NULL;
+    FIM_DA_AGENDA = NULL;
+    INICIO_DA_AUXILIAR = NULL; 
+    FIM_DA_AUXILIAR = NULL;
 
-    while ( * ( int * ) ( pBuffer + 1 ) != 5 ) {
+    while ( ENTRADA != 5 ) {
         printf( "Escolha uma opcao:\n1) Adicionar pessoa\n2) Remover pessoa\n3) Buscar pessoa\n4) Listar pessoas\n5) Sair\nEntrada: " );
-        scanf( "%d", ( int * ) ( pBuffer + 1 ) );
+        scanf( "%d", &ENTRADA );
         getchar ( );
 
-        if ( * ( int * ) ( pBuffer + 1 ) == 1 ) {
-            AdicionarPessoa ( ) ;
+        if ( ENTRADA == 1 ) {
+            INDICE = 0; 
+            printf( "Digite o nome: " );
+            CARACTERE = getchar ( ); 
+            while ( CARACTERE != '\n' && CARACTERE != EOF ) {
+                if ( INDICE < 20 ) { 
+                    * ( char * ) ( NODO_AUXILIAR + INDICE ) = CARACTERE; 
+                    INDICE += 1;
+                }
+                CARACTERE = getchar ( );
+            }
+            * ( char * ) (  NODO_AUXILIAR + INDICE ) = '\0';
+
+            printf ( "Digite a idade: " );
+            scanf ( "%d", ( int * ) (  NODO_AUXILIAR + 20 ) );
+            getchar ( );
+
+            INDICE = 0; 
+
+            printf( "Digite o email: " );
+            CARACTERE = getchar ( );
+            while ( CARACTERE != '\n' && CARACTERE != EOF ) {
+                if ( INDICE < 20 ) { 
+                    * (char * ) ( NODO_AUXILIAR + INDICE + 24 ) = CARACTERE;
+                    INDICE += 1;
+                }
+                CARACTERE = getchar ( );
+            }
+            * ( char * ) ( NODO_AUXILIAR + INDICE + 24 ) = '\0';
+
+            * ( void ** ) (  NODO_AUXILIAR + ANT ) = NULL; 
+            * ( void ** ) (  NODO_AUXILIAR + PROX ) = NULL; 
+            AdicionarPessoa ( NODO_AUXILIAR );
+
         }
 
-        if ( * ( int * ) ( pBuffer + 1 ) == 2 ) {
+        if ( ENTRADA  == 2 ) {
             RemoverPessoa ( );
         }
 
-        if ( * ( int * ) ( pBuffer + 1 ) == 3 ) {
-            void *busca = * ( void ** ) ( pBuffer + 13 );
-            busca = BuscarPessoa ( );
-            if ( busca == NULL ) {
-                printf ( "Pessoa nao encontrada na agenda.\n" );
-            } else {
-                printf ( "Nome: %s\n", ( char * ) busca );
-                printf ( "Idade: %d\n", * ( int * ) ( busca + 20 ) );
-                printf ( "Email: %s\n", ( char * ) busca + 24 );
-            }
+        if ( ENTRADA  == 3 ) {
+            BuscarPessoa ( );
         }
 
-        if ( * ( int * ) ( pBuffer + 1 ) == 4 ) {
+        if ( ENTRADA  == 4 ) {
             ListarPessoas ( );
         }
 
-        if ( * ( int * ) ( pBuffer + 1 ) == 5 ) {
+        if ( ENTRADA == 5 ) {
             printf ( "Agenda encerrada." );
             LimparAgenda ( );
             LimparAuxiliar ( );
@@ -80,100 +102,71 @@ int main ( ) {
 
 /* ====================================================================================== 
 AdicionarPessoa
-
     Adiciona uma pessoa na agenda, coletando o nome, idade e email e então, 
     comparando o nome com as demais pessoas na agenda para saber onde inserir a pessoa.
     Ajusta os ponteiros da pessoa, o inicio e fim da agenda se necessário e incrementa
     o número de pessoas na agenda em 1.
 ====================================================================================== */
 
-void AdicionarPessoa ( ) {
-    void *novaPessoa = malloc ( 60 );
-    * ( int * ) ( pBuffer + 9 ) = 0; 
-
-    printf( "Digite o nome: " );
-    * ( char * ) pBuffer = getchar ( ); 
-    while ( * ( char * ) pBuffer != '\n' && * ( char * ) pBuffer != EOF ) {
-        if (* (int * ) ( pBuffer + 9)  < 20 ) { 
-            * ( char * ) ( novaPessoa + * ( int * ) ( pBuffer + 9 ) ) = * ( char * ) pBuffer; 
-            * ( int * ) ( pBuffer + 9 ) += 1;
-        }
-        * ( char * ) pBuffer = getchar ( );
+void AdicionarPessoa ( void *nodo ){
+    void *novaPessoa = malloc ( ( int ) (40 * sizeof(char) + sizeof(int) + 2*sizeof(char *) ) );
+    if(novaPessoa == NULL){
+        printf("Erro ao alocar memoria.");
+        exit(1);
     }
-    * ( char * ) ( novaPessoa + * ( int * ) ( pBuffer + 9 ) ) = '\0';
 
-    printf ( "Digite a idade: " );
-    scanf ( "%d", ( int * ) ( novaPessoa + 20 ) );
-    getchar ( );
+    memcpy ( novaPessoa, nodo, ( int ) (40 * sizeof(char) + sizeof(int) + 2*sizeof(char *) )  );
 
-    * ( int * ) ( pBuffer + 9 ) = 0; 
+    if ( N_DE_PESSOAS == 0 ) {
 
-    printf( "Digite o email: " );
-    * ( char * ) pBuffer = getchar ( );
-    while ( * ( char * ) pBuffer != '\n' && * ( char * ) pBuffer != EOF ) {
-        if ( * ( int * ) ( pBuffer + 9 ) < 20 ) { 
-            * (char * ) ( novaPessoa + * ( int * ) ( pBuffer + 9 ) + 24 ) = * ( char * ) pBuffer;
-            * ( int * ) ( pBuffer + 9 ) += 1;
-        }
-        * ( char * ) pBuffer = getchar ( );
-    }
-    * ( char * ) ( novaPessoa + * ( int * ) ( pBuffer + 9 ) + 24 ) = '\0';
-
-    * ( void ** ) ( novaPessoa + 44 ) = NULL; 
-    * ( void ** ) ( novaPessoa + 52 ) = NULL; 
-
-    if ( * ( int * ) ( pBuffer + 5 ) == 0 ) {
-
-        * ( void ** ) ( pBuffer + 13 ) = novaPessoa;
-        * ( void ** ) ( pBuffer + 21 ) = novaPessoa;
+        INICIO_DA_AGENDA = novaPessoa;
+        FIM_DA_AGENDA = novaPessoa;
         
     } else {
 
-        void *atual = * ( void ** ) ( pBuffer + 13 ); 
+        void *atual = INICIO_DA_AGENDA; 
         void *anterior = NULL;
 
         while ( atual != NULL && strcmp ( ( char * ) novaPessoa, ( char * ) atual ) > 0 ) {
 
             anterior = atual;
-            atual = * ( void ** ) ( atual + 52 );
+            atual = * ( void ** ) ( atual + PROX );
 
         }
 
         if ( anterior == NULL ) {
 
-            * ( void ** ) ( novaPessoa + 52 ) = atual; 
+            * ( void ** ) ( novaPessoa + PROX ) = atual; 
 
             if ( atual != NULL ) {
-                * ( void ** ) ( atual + 44 ) = novaPessoa;
+                * ( void ** ) ( atual + ANT ) = novaPessoa;
             }
 
-            * ( void ** ) ( pBuffer + 13 ) = novaPessoa;
+            INICIO_DA_AGENDA = novaPessoa;
 
         } else {
 
-            * ( void ** ) ( novaPessoa + 44 ) = anterior;
-            * ( void ** ) ( novaPessoa + 52 ) = atual;
-            * ( void ** ) ( anterior + 52 ) = novaPessoa;
+            * ( void ** ) ( novaPessoa + ANT ) = anterior;
+            * ( void ** ) ( novaPessoa + PROX ) = atual;
+            * ( void ** ) ( anterior + PROX ) = novaPessoa;
             
             if ( atual != NULL ) {
-                * ( void ** ) ( atual + 44 ) = novaPessoa;
+                * ( void ** ) ( atual + ANT ) = novaPessoa;
             }
 
         }
 
         if ( atual == NULL ) {
-            * ( void ** ) ( pBuffer + 21 ) = novaPessoa;
+            FIM_DA_AGENDA = novaPessoa;
         }
         
     }
-
-    * ( int * ) ( pBuffer + 5 ) += 1;
+    N_DE_PESSOAS += 1;
 
 }
 
 /* ====================================================================================== 
 RemoverPessoa
-
     Confere se a agenda está vazia. Se não estiver, chama a função BuscarPessoa que 
     retorna um ponteiro para a pessoa procurada a partir do nome dela. Se não for 
     encontrada, BuscarPessoa retorna NULL. Então, arruma os ponteiros referentes ao nodo
@@ -183,60 +176,134 @@ RemoverPessoa
 
 void RemoverPessoa ( ) {
 
-    if ( * ( int * )( pBuffer + 5 ) == 0 ) {
+    if ( N_DE_PESSOAS == 0 ) {
+
         printf ( "Agenda esta vazia.\n" );
-        return;
-    }
-
-    void *busca = BuscarPessoa ( );
-
-    if ( busca == NULL ) {
-
-        printf( "Pessoa nao encontrada na agenda.\n" );
 
     } else {
 
-        if ( busca == * ( void ** ) ( pBuffer + 13 ) ) {
+        // LE O NOME DA PESSOA A BUSCAR
 
-            if ( * ( int * ) ( pBuffer + 5 ) == 1 ) {
-                * ( void ** ) ( pBuffer + 13 ) = NULL;
-                * ( void ** ) ( pBuffer + 21 ) = NULL;
-                * ( int * ) ( pBuffer + 5 ) = 0;
-                free ( busca );
+        printf ( "Digite o nome da pessoa a remover: " );
 
-            } else {
+        INDICE = 0; 
+        CARACTERE = getchar ( );
 
-                * ( void ** ) ( * ( void ** ) ( busca + 52 ) + 44 ) = NULL;
-                * ( void ** ) ( pBuffer + 13 ) = * ( void ** ) ( busca + 52 );
-                * ( int * ) ( pBuffer + 5 ) -= 1;
-                free ( busca );
+        while ( CARACTERE != '\n' && CARACTERE != EOF ) {
+            if ( INDICE < 20 ) {
+                * ( char * ) ( NOME_BUSCADO + INDICE ) = CARACTERE;
+                INDICE += 1;
             }
-
-        } else if ( busca == * ( void ** ) ( pBuffer + 21 ) ) {
-            * ( void ** ) ( * ( void ** ) ( busca + 44 ) + 52 ) = NULL;
-            * (void ** ) ( pBuffer + 21 ) = * ( void ** ) ( busca + 44 ); 
-            * ( int * ) ( pBuffer + 5 ) -= 1; 
-            free ( busca );
-
-        } else {
-
-            * ( void ** ) ( * ( void ** ) ( busca + 44 ) + 52 ) = * ( void ** ) ( busca + 52 );
-            * ( void ** ) ( * ( void ** ) ( busca + 52 ) + 44) = * ( void ** ) ( busca + 44 );
-            * ( int * ) ( pBuffer + 5 ) -= 1;
-            free ( busca );
-            
+            CARACTERE = getchar(); 
         }
 
-        printf ( "Pessoa removida da lista.\n" );
+        * ( char * ) ( NOME_BUSCADO + INDICE ) = '\0';
 
+        // PERCORRE A AGENDA PRA PROCURAR A PESSOA
+
+        void *atual = INICIO_DA_AGENDA; 
+
+        while ( atual != NULL && strcmp ( ( char * ) atual, ( char * ) ( NOME_BUSCADO ) ) != 0 ) {
+
+            // NÃO ENCONTROU = COLOCA O NODO NO AUXILIAR E TIRA DA AGENDA
+
+            void *novoNodo = malloc ( ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof ( char * ) ) );
+            
+            void *proximo = * ( void ** ) ( atual + PROX );
+            memcpy ( novoNodo, atual, ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof ( char * ) ) );
+
+            // INSERE NA AUXILIAR
+
+            if ( INICIO_DA_AUXILIAR == NULL ) {
+                
+                * ( void ** ) ( novoNodo + ANT ) = NULL;
+                * ( void ** ) ( novoNodo + PROX ) = NULL;
+                INICIO_DA_AUXILIAR = novoNodo;
+                FIM_DA_AUXILIAR = novoNodo;
+            
+            } else {
+                
+                void *p = INICIO_DA_AUXILIAR;
+                void *anterior = NULL;
+                while ( p != NULL && strcmp ( ( char * ) novoNodo, ( char * ) p ) > 0 ) {
+                    anterior = p;
+                    p = * ( void ** ) ( p + PROX );
+                }
+                if ( anterior == NULL ) {
+                    * ( void ** ) ( novoNodo + PROX ) = p; 
+                    if ( p != NULL ) {
+                        * ( void ** ) ( p + ANT ) = novoNodo;
+                    }
+                    INICIO_DA_AUXILIAR = novoNodo;
+                } else {
+                    * ( void ** ) ( novoNodo + ANT ) = anterior;
+                    * ( void ** ) ( novoNodo + PROX ) = p;
+                    * ( void ** ) ( anterior + PROX ) = novoNodo;
+                    if ( p != NULL ) {
+                        * ( void ** ) ( p + ANT ) = novoNodo;
+                    }
+                }
+                if ( p == NULL ) {
+                    FIM_DA_AUXILIAR = novoNodo;
+                    * ( void ** ) ( novoNodo + PROX ) = NULL;
+
+                }
+            }
+
+            // TIRA O NODO DA AGENDA
+
+            INICIO_DA_AGENDA = proximo;
+            if ( proximo != NULL ) {
+                * ( void ** ) ( proximo + ANT ) = NULL;
+                free ( atual );
+                atual = proximo;
+            } else {
+                free ( atual );
+                atual = NULL;
+            }
+
+        }
+
+        // IMPRIME O RESULTADO DA BUSCA
+        if ( atual == NULL ) {
+            printf ( "A pessoa %s nao foi encontrada na agenda.\n" , ( char * ) NOME_BUSCADO );
+            free ( atual );
+        } else {
+            void *proximo = * ( void ** ) ( atual + PROX );
+            INICIO_DA_AGENDA = proximo;
+            if ( proximo != NULL ) {
+                * ( void ** ) ( proximo + ANT ) = NULL;
+                free ( atual );
+                atual = proximo;
+            } else {
+                free ( atual );
+                atual = NULL;
+            }
+        }
+
+        // COLOCA OS NODOS DE VOLTA NA AGENDA
+        if ( atual != NULL ) { 
+            * ( void ** ) ( atual + ANT ) = NULL; 
+        } else {
+            FIM_DA_AGENDA = NULL; 
+        }
+
+        void *pessoa = INICIO_DA_AUXILIAR;
+        while ( pessoa != NULL ) {
+            void * prox = * ( void ** ) ( pessoa + PROX );
+            AdicionarPessoa ( pessoa );
+            pessoa = prox;
+        }
+
+        // LIMPA A AUXILIAR AO FINAL DE CADA BUSCA
+        LimparAuxiliar ( );
+        N_DE_PESSOAS -= 1;
     }
-
 }
 
 
 /* ====================================================================================== 
 BuscarPessoa
-
     Confere se a agenda está vazia. Se não estiver, lê o nome no pBuffer para saber 
     quem buscar. Percorre a agenda a partir do início comparando o nome com as pessoas 
     e cada nodo não correspondente, coloca o nodo no início da fila auxiliar e quando 
@@ -245,87 +312,133 @@ BuscarPessoa
 ====================================================================================== */
 
 
-void *BuscarPessoa ( ) {
-    if ( * ( int * ) ( pBuffer + 5 ) == 0 ) {
+void BuscarPessoa ( ) {
+
+    if ( N_DE_PESSOAS == 0 ) {
+
         printf ( "Agenda esta vazia.\n" );
-        return NULL;
-    }
 
-    printf ( "Digite o nome da pessoa: " );
-
-    * ( int * ) ( pBuffer + 9 ) = 0; 
-    * ( char * ) pBuffer = getchar ( );
-    while ( * ( char * ) pBuffer != '\n' && * ( char * ) pBuffer != EOF ) {
-        if ( * ( int * ) ( pBuffer + 9 ) < 20 ) {
-            * ( char * ) ( pBuffer + 29 + * ( int * ) ( pBuffer + 9 ) ) = * ( char * ) pBuffer;
-            * ( int * ) ( pBuffer + 9 ) += 1;
-        }
-        * ( char * ) pBuffer = getchar(); 
-    }
-    * ( char * ) ( pBuffer + 29 + * ( int * ) ( pBuffer + 9 ) ) = '\0';
-
-    void *atual = * ( void ** ) ( pBuffer + 13 ); 
-    void *filaAuxInicio = NULL; 
-    
-    while ( atual != NULL && strcmp ( ( char * ) atual, ( char * ) ( pBuffer + 29 ) ) != 0 ) {
-
-        void *novoNodo = malloc ( 60 );
-        
-        strcpy ( ( char * ) novoNodo, ( char * ) atual );
-        * ( int * ) ( novoNodo + 20 ) = * ( int * ) ( atual + 20 );
-        strcpy ( ( char * ) ( novoNodo + 24 ), ( char * ) ( atual + 24 ) );
-
-        if ( filaAuxInicio == NULL ) {
-            * ( void ** ) ( novoNodo + 44 ) = NULL;
-            * ( void ** ) ( novoNodo + 52 ) = NULL;
-        } else {
-            * ( void ** ) ( novoNodo + 52 ) = filaAuxInicio;
-            * ( void ** ) ( filaAuxInicio + 44 ) = novoNodo;
-            * ( void ** ) ( novoNodo + 44 ) = NULL;
-        }
-
-        filaAuxInicio = novoNodo; 
-        atual = * ( void ** ) ( atual + 52 ); 
-
-    }
-
-    * ( void ** ) ( pBuffer + 13 ) = atual;
-    if ( atual != NULL ) { 
-        * ( void ** ) ( atual + 44 ) = NULL; 
     } else {
-        * ( void ** ) ( pBuffer + 21 ) = NULL; 
-    }
 
-    while ( filaAuxInicio != NULL ) {
+        // LE O NOME DA PESSOA A BUSCAR
 
-        void *proximaAux = * ( void ** ) ( filaAuxInicio + 52 );
+        printf ( "Digite o nome da pessoa a buscar: " );
 
-        if ( * ( void ** ) ( pBuffer + 13 ) == NULL) {
+        INDICE = 0; 
+        CARACTERE = getchar ( );
 
-            * ( void ** ) ( pBuffer + 13 ) = filaAuxInicio;
-            * ( void ** ) ( pBuffer + 21 ) = filaAuxInicio;
-            * ( void ** ) ( filaAuxInicio + 44 ) = NULL;
-            * ( void ** ) ( filaAuxInicio + 52 ) = NULL;
-        
-        } else {
-
-            * ( void ** ) ( filaAuxInicio + 52 ) = * ( void ** ) ( pBuffer + 13 ); 
-            * ( void ** ) ( * ( void ** ) ( pBuffer + 13 ) + 44 ) = filaAuxInicio; 
-            * ( void ** ) ( filaAuxInicio + 44 ) = NULL;
-            * ( void ** ) ( pBuffer + 13 ) = filaAuxInicio; 
+        while ( CARACTERE != '\n' && CARACTERE != EOF ) {
+            if ( INDICE < 20 ) {
+                * ( char * ) ( NOME_BUSCADO + INDICE ) = CARACTERE;
+                INDICE += 1;
+            }
+            CARACTERE = getchar(); 
         }
 
-        filaAuxInicio = proximaAux;
+        * ( char * ) ( NOME_BUSCADO + INDICE ) = '\0';
+
+        // PERCORRE A AGENDA PRA PROCURAR A PESSOA
+
+        void *atual = INICIO_DA_AGENDA; 
+
+        while ( atual != NULL && strcmp ( ( char * ) atual, ( char * ) ( NOME_BUSCADO ) ) != 0 ) {
+
+            // NÃO ENCONTROU = COLOCA O NODO NO AUXILIAR E TIRA DA AGENDA
+
+            void *novoNodo = malloc ( ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof ( char * ) ) );
+            
+            void *proximo = * ( void ** ) ( atual + PROX );
+            memcpy(novoNodo, atual, ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof ( char * ) ) );
+
+            // INSERE NA AUXILIAR
+
+            if ( INICIO_DA_AUXILIAR == NULL ) {
+                
+                * ( void ** ) ( novoNodo + ANT ) = NULL;
+                * ( void ** ) ( novoNodo + PROX ) = NULL;
+                INICIO_DA_AUXILIAR = novoNodo;
+                FIM_DA_AUXILIAR = novoNodo;
+            
+            } else {
+                
+                void *p = INICIO_DA_AUXILIAR;
+                void *anterior = NULL;
+                while ( p != NULL && strcmp ( ( char * ) novoNodo, ( char * ) p ) > 0 ) {
+                    anterior = p;
+                    p = * ( void ** ) ( p + PROX );
+                }
+                if ( anterior == NULL ) {
+                    * ( void ** ) ( novoNodo + PROX ) = p; 
+                    if ( p != NULL ) {
+                        * ( void ** ) ( p + ANT ) = novoNodo;
+                    }
+                    INICIO_DA_AUXILIAR = novoNodo;
+                } else {
+                    * ( void ** ) ( novoNodo + ANT ) = anterior;
+                    * ( void ** ) ( novoNodo + PROX ) = p;
+                    * ( void ** ) ( anterior + PROX ) = novoNodo;
+                    if ( p != NULL ) {
+                        * ( void ** ) ( p + ANT ) = novoNodo;
+                    }
+                }
+                if ( p == NULL ) {
+                    FIM_DA_AUXILIAR = novoNodo;
+                    * ( void ** ) ( novoNodo + PROX ) = NULL;
+
+                }
+            }
+
+            // TIRA O NODO DA AGENDA
+
+            INICIO_DA_AGENDA = proximo;
+            if ( proximo != NULL ) {
+                * ( void ** ) ( proximo + ANT ) = NULL;
+                free ( atual );
+                atual = proximo;
+                N_DE_PESSOAS -=1;
+            } else {
+                free ( atual );
+                atual = NULL;
+                N_DE_PESSOAS -=1;
+            }
+
+        }
+
+        // IMPRIME O RESULTADO DA BUSCA
+        if ( atual == NULL ) {
+            printf ( "A pessoa %s nao foi encontrada na agenda.\n" , ( char * ) NOME_BUSCADO );
+            free ( atual );
+        } else {
+            printf ( "Nome: %s\n", ( char * ) atual );
+            printf ( "Idade: %d\n", * ( int * ) ( atual + 20 ) );
+            printf ( "Email: %s\n", ( char * ) ( atual + 24 ) );
+        }
+
+        // COLOCA OS NODOS DE VOLTA NA AGENDA
+        if ( atual != NULL ) { 
+            * ( void ** ) ( atual + ANT ) = NULL; 
+        } else {
+            FIM_DA_AGENDA = NULL; 
+        }
+
+        void *pessoa = INICIO_DA_AUXILIAR;
+        while ( pessoa != NULL ) {
+            void * prox = * ( void ** ) ( pessoa + PROX );
+            AdicionarPessoa ( pessoa );
+            pessoa = prox;
+        }
+
+        // LIMPA A AUXILIAR AO FINAL DE CADA BUSCA
+        LimparAuxiliar ( );
 
     }
 
-    return atual;
 }
+
 
 
 /* ====================================================================================== 
 ListarPessoas
-
     Confere se a agenda está vazia. Se não estiver, a partir do inicio da fila principal,
     passa por cada nodo, imprime suas informações, retira da fila pricipal e o insere no
     final da fila auxiliar, decrementando o número de pessoas na agenda. Depois de imprimir
@@ -336,121 +449,133 @@ ListarPessoas
 
 void ListarPessoas ( ) {
 
-    if ( * ( int * ) ( pBuffer + 5 ) == 0 ) {
+    if ( N_DE_PESSOAS == 0 ) {
         printf ( "Agenda está vazia.\n" );
         return;
     }
 
-    * ( void ** ) ( pBuffer + 37 ) = NULL; 
-    * ( void ** ) ( pBuffer + 45 ) = NULL; 
+    INICIO_DA_AUXILIAR = NULL; 
+    FIM_DA_AUXILIAR = NULL; 
 
-    while ( * ( void ** ) ( pBuffer + 13 ) != NULL ) {
+    void *atual = INICIO_DA_AGENDA; 
 
-        void *atual = * ( void ** ) ( pBuffer + 13 ); 
+    while ( atual != NULL ) {
+        
+        void *novoNodo = malloc ( ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof ( char * ) ) );
+        if(novoNodo == NULL){
+            printf ( "Erro ao alocar memoria." );
+            exit ( 1 );
+        }
+        memcpy ( novoNodo, atual, 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof ( char * ) );
+
+        void *proximo = * ( void ** ) ( atual + PROX );
 
         printf ( "Nome: %s\n", ( char * ) atual );
         printf ( "Idade: %d\n", * ( int * ) ( atual + 20 ) );
         printf ( "Email: %s\n\n", ( char * ) ( atual + 24 ) );
 
-        * ( void ** ) ( pBuffer + 13 ) = * ( void ** ) ( atual + 52 ); 
+        // INSERE NA AUXILIAR
 
-        if ( * ( void ** ) ( pBuffer + 13 ) != NULL ) {
-            * ( void ** ) ( * ( void ** ) ( pBuffer + 13 ) + 44 ) = NULL;
+        if ( INICIO_DA_AUXILIAR == NULL ) {
+            
+            * ( void ** ) ( novoNodo + ANT ) = NULL;
+            * ( void ** ) ( novoNodo + PROX ) = NULL;
+            INICIO_DA_AUXILIAR = novoNodo;
+            FIM_DA_AUXILIAR = novoNodo;
+        
         } else {
-            * ( void ** ) ( pBuffer + 21 ) = NULL;
+            
+            void *p = INICIO_DA_AUXILIAR;
+            void *anterior = NULL;
+            while ( p != NULL && strcmp ( ( char * ) novoNodo, ( char * ) p ) > 0 ) {
+                anterior = p;
+                p = * ( void ** ) ( p + PROX );
+            }
+            if ( anterior == NULL ) {
+                * ( void ** ) ( novoNodo + PROX ) = p; 
+                if ( p != NULL ) {
+                    * ( void ** ) ( p + ANT ) = novoNodo;
+                }
+                INICIO_DA_AUXILIAR = novoNodo;
+            } else {
+                * ( void ** ) ( novoNodo + ANT ) = anterior;
+                * ( void ** ) ( novoNodo + PROX ) = p;
+                * ( void ** ) ( anterior + PROX ) = novoNodo;
+                if ( p != NULL ) {
+                    * ( void ** ) ( p + ANT ) = novoNodo;
+                }
+            }
+            if ( p == NULL ) {
+                FIM_DA_AUXILIAR = novoNodo;
+                * ( void ** ) ( novoNodo + PROX ) = NULL;
+
+            }
         }
 
-        * ( int * ) (pBuffer + 5) -= 1;
+        // TIRA O NODO DA AGENDA
 
-        if ( * ( void ** ) ( pBuffer + 37 ) == NULL ) { 
-
-            * ( void ** ) ( pBuffer + 37 ) = atual; 
-            * ( void ** ) ( pBuffer + 45 ) = atual; 
-            * ( void ** ) ( atual + 44 ) = NULL;
-            * ( void ** ) ( atual + 52 ) = NULL;
-            
+        INICIO_DA_AGENDA = proximo;
+        if ( proximo != NULL ) {
+            * ( void ** ) ( proximo + ANT ) = NULL;
+            free ( atual );
+            atual = proximo;
         } else {
-
-            * ( void ** ) ( * ( void ** ) ( pBuffer + 45 ) + 52 ) = atual;
-            * ( void ** ) ( atual + 44 ) = * ( void ** ) ( pBuffer + 45 ); 
-            * ( void ** ) ( atual + 52 ) = NULL;
-            * ( void ** ) ( pBuffer + 45 ) = atual;
-            
+            free ( atual );
+            atual = NULL;
         }
     }
-
-    void *pessoaAtual = * ( void ** ) ( pBuffer + 37 );
-
-    while ( pessoaAtual != NULL ) {
-
-        void *proximaAuxiliar = * ( void ** ) ( pessoaAtual + 52 );
-
-        if ( * ( void ** ) ( pBuffer + 13 ) == NULL ) { 
-            * ( void ** ) ( pBuffer + 13 ) = pessoaAtual; 
-            * ( void ** ) ( pBuffer + 21 ) = pessoaAtual; 
-            * ( void ** ) ( pessoaAtual + 44 ) = NULL; 
-            * ( void ** ) ( pessoaAtual + 52 ) = NULL; 
-            
-        } else {
-
-            void * fim = * ( void ** ) ( pBuffer + 21 );
-            * ( void ** ) ( fim + 52 ) = pessoaAtual; 
-            * ( void ** ) ( pessoaAtual + 44 ) = fim;
-            * ( void ** ) ( pessoaAtual + 52 ) = NULL;
-            * ( void ** ) ( pBuffer + 21 ) = pessoaAtual;
-            
-        }
-
-        * ( int * ) ( pBuffer + 5 ) += 1;
-
-        pessoaAtual = proximaAuxiliar;
-
+    // COLOCA OS NODOS DE VOLTA NA AGENDA
+    if ( atual != NULL ) { 
+        * ( void ** ) ( atual + ANT ) = NULL; 
+    } else {
+        FIM_DA_AGENDA = NULL; 
     }
-
-    * ( void ** ) ( pBuffer + 37 ) = NULL;
-    * ( void ** ) ( pBuffer + 45 ) = NULL;
-
+    void *pessoa = INICIO_DA_AUXILIAR;
+    while ( pessoa != NULL ) {
+        void * prox = * ( void ** ) ( pessoa + PROX );
+        AdicionarPessoa ( pessoa );
+        pessoa = prox;
+    }
+    LimparAuxiliar();
 }
 
 
 /* ====================================================================================== 
 LimparAgenda
-
     Percorre as pessoas na agenda ao fim da execução para dar free em cada uma e não
     gerar memory leak.
 ====================================================================================== */
 void LimparAgenda ( ) {
 
-    void *pessoaAtual = * ( void ** ) ( pBuffer + 13 );
+    void *pessoaAtual = INICIO_DA_AGENDA;
 
     while ( pessoaAtual != NULL ) {
-        void *proximaPessoa = * ( void ** ) ( pessoaAtual + 52 );
+        void *proximaPessoa = * ( void ** ) ( pessoaAtual + PROX );
         free ( pessoaAtual );
         pessoaAtual = proximaPessoa;
     }
 
-    * ( void ** ) ( pBuffer + 13 ) = NULL;
-    * ( void ** ) ( pBuffer + 21 ) = NULL;
+    INICIO_DA_AGENDA = NULL;
+    FIM_DA_AGENDA = NULL;
 
 }
 
 /* ====================================================================================== 
 LimparAuxiliar
-
     Percorre as pessoas na fila auxiliar ao fim da execução para dar free em cada uma e 
     não gerar memory leak.
 ====================================================================================== */
 void LimparAuxiliar ( ) {
 
-    void *pessoaAtual = * ( void ** ) ( pBuffer + 37 );
+    void *pessoaAtual = INICIO_DA_AUXILIAR;
 
     while ( pessoaAtual != NULL ) {
-        void *proximaPessoa = * ( void ** ) ( pessoaAtual + 52 );
+        void *proximaPessoa = * ( void ** ) ( pessoaAtual + PROX );
         free ( pessoaAtual );
         pessoaAtual = proximaPessoa;
     }
 
-    * ( void ** ) ( pBuffer + 37 ) = NULL;
-    * ( void ** ) ( pBuffer + 45 ) = NULL;
+    INICIO_DA_AUXILIAR = NULL;
+    FIM_DA_AUXILIAR = NULL;
 
 }
