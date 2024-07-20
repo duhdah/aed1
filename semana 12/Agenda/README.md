@@ -40,9 +40,6 @@ Cheguei em um ponto onde acredito que tenha entendido, finamente, o que era pra 
 
 Fiz isso conscientemente porque percebi que se tirasse os elementos do início da fila principal, colocasse no início da auxiliar e tirasse do início dela novamente para colocar no início, manteria a ordem alfabética. Compreendo que o certo seria remover do início da fila original e inserir em ordem alfabética na auxiliar. No entanto, eu precisaria modificar a minha função adicionarPessoa para implementar isso e percebi que meu tempo já estava se esgotando mesmo usando as madrugadas pra tentar entregar um código legal. Optei por implementar algo que funcionasse. Deixo um desenho que fiz da lógica que usei nas funções de busca e lista para ter certeza de que funcionaria.
 
-![image](https://github.com/user-attachments/assets/232f090b-d621-4b23-a1a1-6ff7560c74fd)
-
-
 Como esse foi o melhor código que consegui fazer, explicarei melhor como ele funciona:
 * No começo do código, está explicado quantos bytes tem pBuffer e cada "nodo" de pessoa da agenda:
 * Cada "nodo" da agenda tem 60 bytes compostos da seguinte forma: 20 bytes (Nome) + 4 bytes (Idade) + 20 bytes (Email) + 8 bytes (Ponteiro para a pessoa anterior) + 8 bytes (Ponteiro para a próxima pessoa)
