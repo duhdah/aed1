@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// É a mesma agenda, mas usa define pra ficar mais legível!
-
 #define CARACTERE * ( char * ) ( pBuffer )
 #define ENTRADA  * ( int * ) ( pBuffer + sizeof ( char ) )
 #define N_DE_PESSOAS  * ( int * ) ( pBuffer + sizeof ( char ) + sizeof ( int ) )
