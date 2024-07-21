@@ -165,10 +165,8 @@ void AdicionarPessoa ( void *nodo ){
         if ( atual == NULL ) {
             FIM_DA_AGENDA = novaPessoa;
         }
-        
     }
     N_DE_PESSOAS += 1;
-
 }
 
 /* ====================================================================================== 
@@ -183,7 +181,7 @@ RemoverPessoa
 void RemoverPessoa ( ) {
 
     if ( INICIO_DA_AGENDA == NULL  ) {
-        printf ( "Agenda esta vazia.\n" );
+        printf ( "\nAgenda esta vazia.\n\n" );
         return;
     } 
 
@@ -213,7 +211,10 @@ void RemoverPessoa ( ) {
         // ENQUANTO NÃO ENCONTRAR, INSERE A PESSOA NA FILA AUXILIAR E REMOVE DA AGENDA
 
         void *novoNodo = malloc ( ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof ( char * ) ) );
-        
+        if ( novoNodo == NULL ) {
+            printf ( "Erro ao alocar memoria." );
+            exit ( 1 );
+        }
         void *proximo = * ( void ** ) ( atual + PROX );
         memcpy ( novoNodo, atual, ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof ( char * ) ) );
 
@@ -328,7 +329,7 @@ BuscarPessoa
 void BuscarPessoa ( ) {
 
     if ( INICIO_DA_AGENDA == NULL ) {
-        printf ( "Agenda esta vazia.\n" );
+        printf ( "\nAgenda esta vazia.\n\n" );
         return;
     }
 
@@ -358,7 +359,10 @@ void BuscarPessoa ( ) {
         // ENQUANTO NÃO ENCONTRAR, INSERE A PESSOA NA FILA AUXILIAR E REMOVE DA AGENDA
 
         void *novoNodo = malloc ( ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof ( char * ) ) );
-        
+        if ( novoNodo == NULL ) {
+            printf ( "Erro ao alocar memoria." );
+            exit ( 1 );
+        }
         void *proximo = * ( void ** ) ( atual + PROX );
         memcpy ( novoNodo, atual, ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof ( char * ) ) );
 
@@ -419,7 +423,7 @@ void BuscarPessoa ( ) {
     // IMPRIME O RESULTADO DA BUSCA
 
     if ( atual == NULL ) {
-        printf ( "A pessoa %s nao foi encontrada na agenda.\n\n" , ( char * ) NOME_BUSCADO );
+        printf ( "\nA pessoa %s nao foi encontrada na agenda.\n\n" , ( char * ) NOME_BUSCADO );
         free ( atual );
     } else {
         printf ( "\n========================================\n");
@@ -461,7 +465,7 @@ ListarPessoas
 void ListarPessoas ( ) {
     printf( "\n" );
     if ( INICIO_DA_AGENDA == NULL  ) {
-        printf ( "Agenda esta vazia.\n" );
+        printf ( "Agenda esta vazia.\n\n" );
         return;
     }
 
