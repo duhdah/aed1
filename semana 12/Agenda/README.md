@@ -1,5 +1,5 @@
-# Trabalho da Agenda (Desatualizado)
-## Eduarda Pereira Medeiros (M5)
+# Trabalho da Agenda
+# Eduarda Pereira Medeiros (M5)
 
 Desenvolver uma agenda sem alocar variáveis, utilizando apenas *pBuffer e uma lista duplamente encadeada para inserir as pessoas em ordem alfabética conforme as regras da fila ordenada (heap). O objetivo é aprender sobre a organização de memória de modo semelhante ao sistema operacional.
 
@@ -22,6 +22,8 @@ A quarta tentativa era a que eu teria entregue na quinta. Tentei aplicar as regr
 
 Depois da nossa aula de dúvidas da agenda, eu finalmente entendi o que era pra fazer. O meu maior problema no desenvolvimento foi a falha da interpretçaão, pois cada vez que percebia que estava fazendo algo errado, ia me frustrando e duvidando que eu conseguiria fazer da forma correta. Não desisti e consegui uma agenda funcional, o que pra mim foi uma grande vitória! Usei a fila auxiliar devidamente nas funções, não obtive memory leak no valgrind, parece tudo bem. Só não consegui realocar o meu pBuffer conforme necessidade porque como eu estava usando define, foi difícil me habituar a usar os ponteiros pra pBuffer, e já que teria que modificar o meu código inteiro, achei que dificilmente teria tempo pra isso. Achei melhor pelo menos fazer o vídeo da forma que está, já que o código em si é funcional.
 
+Só para constar, deixei as minhas tentativas na pasta Tentativas desse repositório para mostrar a evolução do código.
+
 ## Código final
 
 No meu código, optei por usar define para as posições do pBuffer para deixar o código mais legível. Além disso, usei outros defines (IDADE, EMAIL, ANT e PROX) que se referiam às posições dentro do nodo da pessoa para ficar mais fácil de entender o que estou alterando. 
@@ -29,6 +31,8 @@ No meu código, optei por usar define para as posições do pBuffer para deixar 
 No meu pBuffer, estão as variáveis que utilizei ao longo do códigos, ponteiros para o início e o fim da agenda e da fila auxiliar e um nodo auxiliar usado como parâmetro na função AdicionarPessoa().
 
 As funções criadas no código foram AdicionarPessoa(), RemoverPessoa(), BuscarPessoa(), ListarPessoas(), LimparAgenda() e LimparAuxiliar(). Enquanto as 4 primeiras foram as explicitamente requisitadas no enunciado, as duas últimas percorrem a fila da agenda e da auxiliar para garantir que os nodos sejam desalocados. Cada função no código tem uma descrição no código.
+
+O código final é a Agenda.c .
 
 ## Teste
 
