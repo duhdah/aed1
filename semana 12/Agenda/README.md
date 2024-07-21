@@ -1,6 +1,7 @@
 # Trabalho da Agenda
-# Eduarda Pereira Medeiros (M5)
+## Eduarda Pereira Medeiros (M5)
 
+## Enunciado
 Desenvolver uma agenda sem alocar variáveis, utilizando apenas *pBuffer e uma lista duplamente encadeada para inserir as pessoas em ordem alfabética conforme as regras da fila ordenada (heap). O objetivo é aprender sobre a organização de memória de modo semelhante ao sistema operacional.
 
 ## Etapas do desenvolvimento
