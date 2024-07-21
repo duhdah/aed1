@@ -1,4 +1,4 @@
-# Trabalho da Agenda
+# Trabalho da Agenda (Desatualizado)
 ## Eduarda Pereira Medeiros (M5)
 
 Desenvolver uma agenda sem alocar variáveis, utilizando apenas *pBuffer e uma lista duplamente encadeada para inserir as pessoas em ordem alfabética conforme as regras da fila ordenada (heap).
