@@ -7,25 +7,23 @@ Desenvolver uma agenda sem alocar variáveis, utilizando apenas *pBuffer e uma l
 ## Etapas do desenvolvimento
 ### Compreensão do ponteiro do tipo void
 
-Comecei a trabalhar na agenda 3 semanas antes da data de entrega (na semana 9), fazendo pequenos códigos para ler dados como inteiros e strings no pBuffer. Sabia que o trabalho era difícil, portanto, não quis deixar para última hora e tentei começar pelo menos a compreendar a ideia logo. Anotei no começo do código o que cada posição do pBuffer guardava para identificar o que eu estava fazendo. 
+Comecei a trabalhar na agenda 3 semanas antes da data de entrega (Semana 9), fazendo pequenos códigos para ler dados como inteiros e strings no pBuffer. Sabia que o trabalho era difícil, portanto, não quis deixar para última hora e tentei começar pelo menos a compreendar a ideia logo. Anotei no começo do código o que cada posição do pBuffer guardava para identificar o que eu estava fazendo. 
 
 ### Tentativas
 
 Entre as semanas 10 e 12, eu escrevi muitos códigos. Foi um processo, pois a cada nova tentativa, eu descobria algo que estava fazendo errado. 
 
-__ 
-* Semana 10
-__
+* Semana 10:
 
 Na primeira, eu estava tentando armazenar o tamanho de cada nome e email no pBuffer para evitar gastar memória a mais, o que me deu uma dor de cabeça imensa. Quando descobri que podia ter um número fixo de char para cada string, rcomecei de novo.
 
-* Semana 11
+* Semana 11:
 
 Na segunda, estava usando o pAgenda como um "vetor" de nodos, dando realloc nele cada vez. Depois, me dei conta que o pAgenda deveria ser a cabeça da agenda e não ela inteira e reformulei o código. No novo código, 
 
 Na terceira, utilzei apenas o pBuffer, porém, apliquei as regras da heap somente na hora de adicionar as pessoas. Tinha entendido dessa maneira e quando percebi que estava errado, refiz as minhas funções.
 
-* Semana 12
+* Semana 12:
 
 A quarta tentativa era a que eu teria entregue na quinta. Tentei aplicar as regras da heap, usei uma fila auxiliar, mas na função Buscar, tive problemas e acabei optando por inserir e remover da fila auxiliar pra agenda e vice-versa sempre do início para manter a ordem. Além disso, estava com um erro de memory leak nessa função e também não estava dando free nas pessoas cada vez que as mudava de fila. Em geral, o código funcionava, mas não se adequava totamente ao que foi pedido.
 
