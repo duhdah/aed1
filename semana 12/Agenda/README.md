@@ -13,7 +13,9 @@ Comecei a trabalhar na agenda 3 semanas antes da data de entrega (na semana 9), 
 
 Entre as semanas 10 e 12, eu escrevi muitos códigos. Foi um processo, pois a cada nova tentativa, eu descobria algo que estava fazendo errado. 
 
-__ * Semana 10 __
+__ 
+* Semana 10
+__
 
 Na primeira, eu estava tentando armazenar o tamanho de cada nome e email no pBuffer para evitar gastar memória a mais, o que me deu uma dor de cabeça imensa. Quando descobri que podia ter um número fixo de char para cada string, rcomecei de novo.
 
