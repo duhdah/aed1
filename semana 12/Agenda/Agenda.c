@@ -2,17 +2,21 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+Atualização feita depois da gravação do vídeo:
+- Removi a posição N_DE_PESSOAS que estava em pBuffer pois era desnecessária.
+*/
+
 // DEFINE REFERENTE ÀS POSIÇÕES DE PBUFFER:
 #define CARACTERE * ( char * ) ( pBuffer )
 #define ENTRADA  * ( int * ) ( pBuffer + sizeof ( char ) )
-#define N_DE_PESSOAS  * ( int * ) ( pBuffer + sizeof ( char ) + sizeof ( int ) )
-#define INDICE * ( int * ) ( pBuffer + sizeof ( char ) + 2 * sizeof ( int ) )
-#define INICIO_DA_AGENDA * ( void ** ) ( pBuffer + sizeof ( char ) + 3 * sizeof ( int ) )
-#define FIM_DA_AGENDA * ( void ** ) ( pBuffer + sizeof ( char ) + 3 * sizeof ( int ) + sizeof ( void * ) )
-#define NOME_BUSCADO pBuffer + ( sizeof ( char ) + 3 * sizeof ( int ) + 2 * sizeof ( void * ) )
-#define INICIO_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 * sizeof ( char ) + 3 * sizeof ( int ) + 2 * sizeof ( void * ) )
-#define FIM_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 * sizeof ( char ) + 3 * sizeof ( int ) + 3 * sizeof ( void * ) )
-#define NODO_AUXILIAR pBuffer + ( 21 * sizeof ( char ) + 3 * sizeof ( int ) + 4 * sizeof ( void * ) )
+#define INDICE * ( int * ) ( pBuffer + sizeof ( char ) + sizeof ( int ) )
+#define INICIO_DA_AGENDA * ( void ** ) ( pBuffer + sizeof ( char ) + 2 * sizeof ( int ) )
+#define FIM_DA_AGENDA * ( void ** ) ( pBuffer + sizeof ( char ) + 2 * sizeof ( int ) + sizeof ( void * ) )
+#define NOME_BUSCADO pBuffer + ( sizeof ( char ) + 2 * sizeof ( int ) + 2 * sizeof ( void * ) )
+#define INICIO_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 * sizeof ( char ) + 2 * sizeof ( int ) + 2 * sizeof ( void * ) )
+#define FIM_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 * sizeof ( char ) + 2 * sizeof ( int ) + 3 * sizeof ( void * ) )
+#define NODO_AUXILIAR pBuffer + ( 21 * sizeof ( char ) + 2 * sizeof ( int ) + 4 * sizeof ( void * ) )
 
 // DEFINE REFERENTE ÀS POSIÇÕES DAS INFORMAÇÕES NOS NODOS DAS PESSOAS:
 #define IDADE ( int ) ( 20 * sizeof ( char ) )
@@ -31,13 +35,12 @@ void LimparAuxiliar ( );
 
 int main ( ) {
 
-    pBuffer = malloc ( sizeof ( char ) + 3 * sizeof ( int ) + 2 * sizeof ( char * ) + 20 * sizeof ( char ) + 2 * sizeof ( char * ) + 20 * sizeof ( char ) + sizeof ( int ) + 20 * sizeof ( char ) + 2 * sizeof ( char * ) ); 
+    pBuffer = malloc ( sizeof ( char ) + 2 * sizeof ( int ) + 2 * sizeof ( char * ) + 20 * sizeof ( char ) + 2 * sizeof ( char * ) + 20 * sizeof ( char ) + sizeof ( int ) + 20 * sizeof ( char ) + 2 * sizeof ( char * ) ); 
     if ( pBuffer == NULL ) {
         printf ( "Erro ao alocar memoria de pBuffer." );
         exit ( 1 );
     }
     ENTRADA = 0;
-    N_DE_PESSOAS = 0; 
     INICIO_DA_AGENDA = NULL;
     FIM_DA_AGENDA = NULL;
     INICIO_DA_AUXILIAR = NULL; 
@@ -123,10 +126,12 @@ void AdicionarPessoa ( void *nodo ){
 
     memcpy ( novaPessoa, nodo, ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof (char * ) ) );
 
-    if ( N_DE_PESSOAS == 0 ) {
+    if ( INICIO_DA_AGENDA == NULL ) {
 
         INICIO_DA_AGENDA = novaPessoa;
         FIM_DA_AGENDA = novaPessoa;
+        * ( void ** ) (  novaPessoa + ANT ) = NULL; 
+        * ( void ** ) (  novaPessoa + PROX ) = NULL; 
         
     } else {
 
@@ -165,8 +170,9 @@ void AdicionarPessoa ( void *nodo ){
         if ( atual == NULL ) {
             FIM_DA_AGENDA = novaPessoa;
         }
+        
     }
-    N_DE_PESSOAS += 1;
+
 }
 
 /* ====================================================================================== 
@@ -311,7 +317,6 @@ void RemoverPessoa ( ) {
     }
 
     LimparAuxiliar ( );
-    N_DE_PESSOAS -= 1;
         
 }
 
@@ -411,13 +416,10 @@ void BuscarPessoa ( ) {
             * ( void ** ) ( proximo + ANT ) = NULL;
             free ( atual );
             atual = proximo;
-            N_DE_PESSOAS -=1;
         } else {
             free ( atual );
             atual = NULL;
-            N_DE_PESSOAS -=1;
         }
-
     }
 
     // IMPRIME O RESULTADO DA BUSCA
