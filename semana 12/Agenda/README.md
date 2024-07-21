@@ -15,11 +15,11 @@ Entre as semanas 10 e 12, eu escrevi muitos códigos. Foi um processo, pois a ca
 
 * Semana 10:
 
-Na primeira, eu estava tentando armazenar o tamanho de cada nome e email no pBuffer para evitar gastar memória a mais, o que me deu uma dor de cabeça imensa. Quando descobri que podia ter um número fixo de char para cada string, rcomecei de novo.
+Na primeira, eu estava tentando armazenar o tamanho de cada nome e email no pBuffer para evitar gastar memória a mais, o que me deu uma dor de cabeça imensa. Quando descobri que podia ter um número fixo de char para cada string, recomecei o trabalho.
 
 * Semana 11:
 
-Na segunda, estava usando o pAgenda como um "vetor" de nodos, dando realloc nele cada vez. Depois, me dei conta que o pAgenda deveria ser a cabeça da agenda e não ela inteira e reformulei o código. No novo código, 
+Na segunda, estava usando o pAgenda como um "vetor" de nodos, dando realloc nele cada vez. Depois, me dei conta que o pAgenda deveria ser a cabeça da agenda e não ela inteira e reformulei o código.
 
 Na terceira, utilzei apenas o pBuffer, porém, apliquei as regras da heap somente na hora de adicionar as pessoas. Tinha entendido dessa maneira e quando percebi que estava errado, refiz as minhas funções.
 
@@ -27,7 +27,7 @@ Na terceira, utilzei apenas o pBuffer, porém, apliquei as regras da heap soment
 
 A quarta tentativa era a que eu teria entregue na quinta. Tentei aplicar as regras da heap, usei uma fila auxiliar, mas na função Buscar, tive problemas e acabei optando por inserir e remover da fila auxiliar pra agenda e vice-versa sempre do início para manter a ordem. Além disso, estava com um erro de memory leak nessa função e também não estava dando free nas pessoas cada vez que as mudava de fila. Em geral, o código funcionava, mas não se adequava totamente ao que foi pedido.
 
-Depois da nossa aula de dúvidas da agenda, eu finalmente entendi o que era pra fazer. O meu maior problema no desenvolvimento foi a falha da interpretçaão, pois cada vez que percebia que estava fazendo algo errado, ia me frustrando e duvidando que eu conseguiria fazer da forma correta. Não desisti e consegui uma agenda funcional, o que pra mim foi uma grande vitória! Usei a fila auxiliar devidamente nas funções, não obtive memory leak no valgrind, parece tudo bem. Só não consegui realocar o meu pBuffer conforme necessidade porque como eu estava usando define, foi difícil me habituar a usar os ponteiros pra pBuffer, e já que teria que modificar o meu código inteiro, achei que dificilmente teria tempo pra isso. Achei melhor pelo menos fazer o vídeo da forma que está, já que o código em si é funcional.
+Depois da nossa aula de dúvidas da agenda, eu finalmente entendi o que era pra fazer. O meu maior problema no desenvolvimento foi a falha da interpretação, pois cada vez que percebia que estava fazendo algo errado, ia me frustrando e duvidando que eu conseguiria fazer da forma correta. Não desisti e consegui uma agenda funcional seguindo as normas, o que pra mim foi uma grande vitória. Usei a fila auxiliar devidamente nas funções, não obtive memory leak no valgrind, parece tudo bem. Só não consegui realocar o meu pBuffer conforme necessidade porque como eu estava usando define, foi difícil me habituar a usar os ponteiros pra pBuffer, e já que teria que modificar o meu código inteiro, achei que dificilmente teria tempo pra isso. Achei melhor pelo menos fazer o vídeo da forma que está, já que o código em si é funcional.
 
 Só para constar, deixei as minhas tentativas na pasta Tentativas desse repositório para mostrar a evolução do código.
 
@@ -43,7 +43,7 @@ O código final é a Agenda.c.
 
 ## Teste
 
-Testes a serem feitos:
+Testes feitos:
 
 1) Não fazer nada e encerrar a execução;
 2) Adicionar várias pessoas, listar as pessoas e encerrar a execução;
