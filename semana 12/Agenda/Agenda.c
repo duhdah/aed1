@@ -14,7 +14,7 @@
 #define FIM_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 *sizeof ( char ) + 3 * sizeof(int) + 3 * sizeof ( void * ) )
 #define NODO_AUXILIAR pBuffer + ( 21 * sizeof(char) + 3 * sizeof ( int ) + 4 * sizeof ( void * ) )
 
-// DEFINE REFERENTE ÀS POSIÇÕES DAS INFORMAÇÕES NOS NODOS DAS PESSOAS
+// DEFINE REFERENTE ÀS POSIÇÕES DAS INFORMAÇÕES NOS NODOS DAS PESSOAS:
 #define IDADE ( int ) ( 20 * sizeof ( char ) )
 #define EMAIL ( int ) ( 20 * sizeof ( char ) + sizeof ( int ) )
 #define ANT ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) )
