@@ -39,7 +39,7 @@ No meu pBuffer, estão as variáveis que utilizei ao longo do códigos, ponteiro
 
 As funções criadas no código foram AdicionarPessoa(), RemoverPessoa(), BuscarPessoa(), ListarPessoas(), LimparAgenda() e LimparAuxiliar(). Enquanto as 4 primeiras foram as explicitamente requisitadas no enunciado, as duas últimas percorrem a fila da agenda e da auxiliar para garantir que os nodos sejam desalocados. Cada função no código tem uma descrição no código.
 
-O código final é a Agenda.c .
+O código final é a Agenda.c.
 
 ## Teste
 
