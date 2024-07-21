@@ -10,9 +10,9 @@
 #define INICIO_DA_AGENDA * ( void ** ) ( pBuffer + sizeof ( char ) + 3 * sizeof ( int ) )
 #define FIM_DA_AGENDA * ( void ** ) ( pBuffer + sizeof ( char ) + 3 * sizeof ( int ) + sizeof ( void * ) )
 #define NOME_BUSCADO pBuffer + ( sizeof ( char ) + 3 * sizeof ( int ) + 2 * sizeof ( void * ) )
-#define INICIO_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 *sizeof(char) + 3 * sizeof(int) + 2 * sizeof ( void * ) )
-#define FIM_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 *sizeof ( char ) + 3 * sizeof(int) + 3 * sizeof ( void * ) )
-#define NODO_AUXILIAR pBuffer + ( 21 * sizeof(char) + 3 * sizeof ( int ) + 4 * sizeof ( void * ) )
+#define INICIO_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 * sizeof ( char ) + 3 * sizeof ( int ) + 2 * sizeof ( void * ) )
+#define FIM_DA_AUXILIAR * ( void ** ) ( pBuffer + 21 * sizeof ( char ) + 3 * sizeof ( int ) + 3 * sizeof ( void * ) )
+#define NODO_AUXILIAR pBuffer + ( 21 * sizeof ( char ) + 3 * sizeof ( int ) + 4 * sizeof ( void * ) )
 
 // DEFINE REFERENTE ÀS POSIÇÕES DAS INFORMAÇÕES NOS NODOS DAS PESSOAS:
 #define IDADE ( int ) ( 20 * sizeof ( char ) )
@@ -22,7 +22,7 @@
 
 void *pBuffer;
 
-void AdicionarPessoa ( void *nodo);
+void AdicionarPessoa ( void * nodo );
 void RemoverPessoa ( );
 void BuscarPessoa ( );
 void ListarPessoas ( );
@@ -67,7 +67,7 @@ int main ( ) {
 
             INDICE = 0; 
 
-            printf( "Digite o email: " );
+            printf ( "Digite o email: " );
             CARACTERE = getchar ( );
             while ( CARACTERE != '\n' && CARACTERE != EOF ) {
                 if ( INDICE < 20 ) { 
@@ -121,7 +121,7 @@ void AdicionarPessoa ( void *nodo ){
         exit ( 1 );
     }
 
-    memcpy ( novaPessoa, nodo, ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof (char * ) )  );
+    memcpy ( novaPessoa, nodo, ( int ) ( 40 * sizeof ( char ) + sizeof ( int ) + 2 * sizeof (char * ) ) );
 
     if ( N_DE_PESSOAS == 0 ) {
 
@@ -332,7 +332,7 @@ void BuscarPessoa ( ) {
         return;
     }
 
-    // LÊ O NOME DA PESSOA A REMOVER
+    // LÊ O NOME DA PESSOA A BUSCAR
 
     printf ( "\nDigite o nome da pessoa a buscar: " );
 
