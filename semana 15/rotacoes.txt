@@ -1,0 +1,12 @@
+
+Se a árvore tem mais nodos na esquerda, FB > 1, há duas possibilidades de rotação:
+    Rotação simples para a direita (Se tem mais nodos na esquerda, tem que passar algum para a direita)
+    Rotação dupla para a direita (Rotação para a esquerda e depois para a direita (Left-Right))
+
+Se a árvore tem mais nodos na direita, FB < -1, há duas possibilidades de rotação:
+    Rotação simples para a esquerda (Se tem mais nodos na direita, tem que passar algum para a esquerda)
+    Rotação dupla para a esquerda (Rotação para a direita e depois para a esquerda (Right-Left))
+
+Link para estudar as rotações:
+    https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
+
