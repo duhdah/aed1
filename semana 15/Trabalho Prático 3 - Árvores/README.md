@@ -36,7 +36,7 @@ O código feito em casa pode ser encontrado no repositório como CodigoFeitoEmCa
 
 ## Casos de teste (Valgrind)
 
-### OBS: As árvores dos testes foram implementadas manualmente já que as árvores do exercício não seguiam nenhuma regra de inserção aparente. Por isso, cada teste tem um código correspondente que foram colocados na pasta Teste.
+### OBS: As árvores dos testes foram implementadas manualmente já que as árvores do exercício não seguiam nenhuma regra de inserção aparente. Por isso, cada teste tem um código correspondente que foi colocados na pasta Teste.
 
 ### Teste 1:
 
