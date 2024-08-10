@@ -78,5 +78,4 @@ Output [0,3,1,4,null,2,null,null,6,null,5]
 Na pasta Teste: teste5.c
 
 
-
-Nenhum memory leak foi detectado nos testes.
+### Nenhum memory leak foi detectado nos testes.
