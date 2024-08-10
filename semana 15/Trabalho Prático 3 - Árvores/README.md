@@ -36,6 +36,8 @@ O código feito em casa pode ser encontrado no repositório como CodigoFeitoEmCa
 
 ## Casos de teste (Valgrind)
 
+### OBS: As árvores dos testes foram implementadas manualmente já que as árvores do exercício não seguiam nenhuma regra de inserção aparente. Por isso, cada teste tem um código correspondente que foram colocados na pasta Teste.
+
 ### Teste 1:
 
 Input: root = [3,5,1,6,2,0,8,null,null,7,4]
