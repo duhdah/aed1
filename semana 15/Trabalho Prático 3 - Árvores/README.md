@@ -24,7 +24,7 @@ O código feito em aula pode ser encontrado no repositório como CodigoFeitoEmAu
 
 ## Código feito em casa
 
-Em casa, resolvi analisar melhor o problema desenhando as árvores pra pensar em uma estratégia melhor. Optei por começar de novo e deixar o que já tinha feito de lado porque não seria eficiente continuar naquele código, uma vez que não faria sentido manter pedaços de códigos para casos específicos se eu deveria encontrar algo mais geral.
+Em casa, resolvi analisar melhor o problema desenhando as árvores pra pensar em uma estratégia melhor. Optei por começar de novo e deixar o que já tinha feito de lado porque não seria eficiente continuar naquele código, uma vez que não faria sentido manter pedaços de códigos para casos específicos se eu deveria encontrar algo mais geral. Por isso, nem usei o comparativo de arquivos.
 
 Então, decidi tentar buscar a profundidade de todos os nodos ao invés de só encontrar os nodos mais profundos. Procurei uma forma de comparar a profudidade dos nodos da árvore. Travei um pouco na hora de implementar a lógica correta para criar a função que estava idealizando, então dei uma olhada no editorial, entendi a estratégia que eles usavam e apliquei no meu código. Dessa vez, funcionou e o código ficou bem mais simplificado e conseguiu abranger todos os casos. 
 
