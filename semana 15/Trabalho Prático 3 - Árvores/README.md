@@ -26,7 +26,9 @@ O código feito em aula pode ser encontrado no repositório como CodigoFeitoEmAu
 
 Em casa, resolvi analisar melhor o problema desenhando as árvores pra pensar em uma estratégia melhor. Optei por começar de novo e deixar o que já tinha feito de lado porque não seria eficiente continuar naquele código, uma vez que não faria sentido manter pedaços de códigos para casos específicos se eu deveria encontrar algo mais geral.
 
-Então, decidi tentar buscar a profundidade de todos os nodos ao invés de só encontrar os nodos mais profundos. Procurei uma forma de comparar a profudidade dos nodos da árvore. Travei um pouco na hora de implementar a lógica correta para criar a função que estava idealizando, então dei uma olhada no editorial, entendi a estratégia que eles usavam e apliquei no meu código. Dessa vez, funcionou e o código ficou bem mais simplificado e conseguiu abranger todos os casos.
+Então, decidi tentar buscar a profundidade de todos os nodos ao invés de só encontrar os nodos mais profundos. Procurei uma forma de comparar a profudidade dos nodos da árvore. Travei um pouco na hora de implementar a lógica correta para criar a função que estava idealizando, então dei uma olhada no editorial, entendi a estratégia que eles usavam e apliquei no meu código. Dessa vez, funcionou e o código ficou bem mais simplificado e conseguiu abranger todos os casos. 
+
+É importante mencionar que o que eu chamei de "profundidade" na minha solução na verdade seria a altura, já que o nodo mais profundo acabou ficando com o menor valor da árvore. No final do código, adicionei uma versão do código que implementa diretamente o que fiz só que usando altura. As duas funcionam, só optei por usar o termo profundidade na minha solução porque o objetivo era comparar profundidades, só percebi depois que o valor númerico ficou o "inverso" para usar a recursividade corretamente da forma que eu queria.
 
 O runtime no LeetCode variou entre 0 e 6 ms nas minhas submissões, mas foi aceito!
 
