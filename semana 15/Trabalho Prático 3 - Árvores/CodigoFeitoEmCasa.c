@@ -1,5 +1,5 @@
 
-// Complexidade do código: O(n), em que n representa o número de nodos em uma árvore
+// Complexidade do código: O(n), em que n representa o número de nodos da árvore
 
 /*
 ==================================================================
