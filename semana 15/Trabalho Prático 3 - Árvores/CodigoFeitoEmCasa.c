@@ -58,7 +58,7 @@ struct TreeNode* subtreeWithAllDeepest ( struct TreeNode* root ) {
 
 /*
 
-Versão alternativa implementando a mesma logic, mas usando a altura dos nodos diretamente:
+Versão alternativa implementando a mesma logica, mas usando a altura dos nodos diretamente:
 
 int Altura ( struct TreeNode *raiz ) { 
     if ( raiz == NULL ) {
