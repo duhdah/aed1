@@ -37,28 +37,45 @@ O código feito em casa pode ser encontrado no repositório como CodigoFeitoEmCa
 ## Casos de teste (Valgrind)
 
 * Teste 1:
+* 
 Input: root = [3,5,1,6,2,0,8,null,null,7,4]
+
 Output: [2,7,4]
+
 Na pasta Teste: teste1.c
 
 * Teste 2:
+
 Input: root = [1]
+
 Output: [1]
+
 Na pasta Teste: teste2.c
 
 * Teste 3:
+
 Input: root = [0,1,3,null,2]
+
 Output: [2]
+
 Na pasta Teste: teste3.c
 
 * Teste 4:
+
 Input = root = []
+
 Output: []
+
 Na pasta Teste: teste4.c
 
+
 * Teste 5:
+
 Input: [0,3,1,4,null,2,null,null,6,null,5]
+
 Output [0,3,1,4,null,2,null,null,6,null,5]
+
 Na pasta Teste: teste5.c
+
 
 Nenhum memory leak foi detectado nos testes.
