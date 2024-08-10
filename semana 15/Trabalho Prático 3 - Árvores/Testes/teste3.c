@@ -17,11 +17,11 @@ int main() {
     // Teste 3: root = [0,1,3,null,2]
     /*
     Árvore de teste:
-               0 (2) 
+               0 (3) 
             /        \
-        1 (1)         3(0)
+        1 (2)         3(1)
              \           
-             2 (0)  
+             2 (1)  
     */
     struct TreeNode* root = NovoNodo ( 0 );
     root->left = NovoNodo ( 1 );
