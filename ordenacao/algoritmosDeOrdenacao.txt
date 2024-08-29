@@ -1,0 +1,106 @@
+
+MERGE SORT:
+
+Divide a lista em duas partes iguais e vai dividindo até ter dois elementos em cada lista
+Ordena todas as listas (Inicialmente, tem 2 elementos por lista)
+Junta as listas adjacentes, ordenando-as
+
+Função merge_sort: Recebe como entrada a lista que queremos ordenar
+    1. Verifica se m<=1, e se for, retorna m
+    2. Cria uma variavel para a lista da esquerda, da direita e do resultado
+    3. Guarda o indice do meio
+    4. Coloca os valores do inicio até o meio na lista esquerda
+    5. Coloca os valores do meio até o inicio na direita.
+    6. RECURSÃO: esquerda = merge_sort(esquerda)
+                 direita = merge_sort (direita)
+    7. Chama a função que ordena
+        resultado = merge(esquerda, direita)
+    8. Retorna o resultado.
+
+Função merge: recebe a lista da esquerda e da direita
+    1. Cria a lista resultado
+    2. Verifica se tem alguém em alguma das listas e depois verifica se tem nas duas listas
+        O comportamento do código depende de quais das listas vão ter informações.
+    3. O resto do código é comparações e ifs para cada caso
+
+OBS: Primeira vez que o merge é chamado, a lista só tem um de cada lado.
+(Não precisa comparar já que só tem um elemento)
+
+ORDEM QUE EXECUTA: Não é a mesma da figura.
+Faz primeiro todo um lado (esquerdo)
+Depois, todo do lado direito
+EXERCÍCIO: Desenhar com caneta a ordem de execução.
+
+Esse algoritmo tem o mesmo tempo de execução para todos os casos. (Não tem melhor e pior caso)
+Isso é bom? Depende!
+Se for uma lista muito grande, é muito bom.
+O insertion sort era muito rápido pra casos fáceis de ordenar e muito lento para os mais difíceis.
+
+Memória: O(n) (com listas ligadas)
+    Cresce, mas na mesma proporção
+Computação: (O n*log(n))
+    Acelera no começo e vai desacelerando
+
+Processamento paralelo: Com esse algoritmo, seria possivel fazer a esquerda rodar um e a direita
+rodar outro lado (cada um em uma chamada recursiva de merge_sort)
+
+Não tem um algoritmo que é melhor que todos. O que tem que pensar é qual o nosso problema e qual será 
+a melhor escolha para o que queremos.
+
+
+
+QUICK SORT:
+
+Escolhe um pivô, coloca os menores em uma primeira lista, os maiores em um uma segunda lista
+O pivô é colocado entre as duas listas
+O processo é repetido para cada sublista
+
+É um algoritmo recursivo
+Na primeira vez que é chamado, passa o vetor inteiro
+ 
+O i começa com o valor da esquerda. Vai procurando com i no vetor um elemento menor que o meio.
+Vai procurando, depois, com j a partir do fim até o meio. Compara com o pivo.
+Ao encontrar dois elementos que estavam no lado errado, troca os dois.
+Ainda não está ordenando, só faz com que em um lado tenha os menores e em outro, maiores.
+
+A condição de final é quando termina de dividir (Não tem return)
+
+Pior caso:
+    O pivô é o maior ou o menor do conjunto. Não consegue dividir as listas.
+
+Melhor caso:
+    O pivô é o elemento central (depois da ordenação)
+
+Como achar o melhor pivô:
+    Percorrer o vetor procurando o pivô ideal.
+    MAS esse é o problema que queremos resolver. Seria o mesmo que ordenar.
+    O desempenho ficaria ruim.
+
+Não tem como saber qual o melhor pivô e qual é o pior.
+
+Melhor forma de achar pivô: Pegar um pivô aleatório.
+    A chance de pegar o pior pivõ é a mesma que de pegar o melhor pivô.
+    Pode ser sempre o do meio desde que o vetor ordenado aleatoriamente.
+
+Desempenho da memória
+    O(n) divisão e conquista
+
+Desempenho da computação:
+    O(n²) no pior caso
+    O(n*log(n)) na maioria dos casos
+
+Não é melhor usar o merge sort sempre?
+    Quando temos uma noção de quem é o pivô, é melhor usar o quick sort.
+
+E o Bubble Sort? É sempre pior que os outros?
+    Não! 
+    É lento porque cresce exponencialmente, então se for um vetor muito grande, é muito ruim.
+    Mas se for um vetor pequeno, é muito mais rápido que os outros.
+
+Merge Sort e Quick Sort estão na mesma classe de tempo.
+Não tem tanta diferença entre escolher errado um desses do que escolher errado entre um desses e o Bubble Sort, por exemplo.
+
+
+Na criptografia: Se tem a chave errada, cai na classe de tempo errada e demora muito.
+
+
