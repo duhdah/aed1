@@ -1,7 +1,7 @@
 # Trabalho Prático 4 - Ordenação
 ## Eduarda Pereira Medeiros
 
-LeetCode 826: Most Profit Assigning Work
+** 826: Most Profit Assigning Work **
 
 You have n jobs and m workers. You are given three arrays: difficulty, profit, and worker where:
 
@@ -13,4 +13,4 @@ For example, if three workers attempt the same job that pays $1, then the total 
 Return the maximum profit we can achieve after assigning the workers to the jobs.
 
 # Código feito em aula
-## O código funcionou! 
+## O código funcionou! 🎉🎊
