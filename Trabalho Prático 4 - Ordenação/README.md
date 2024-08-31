@@ -29,26 +29,27 @@ Como meu código já funcionou em aula, não precisei elaborar um novo código. 
 
 Algo que testei modificando o meu código foi implementar o Merge Sort ao invés do Insertion Sort para ver que impacto teria no runtime. Incrivelmente, não teve nenhum, só ocupou mais memória. Achava que o Merge Sort teria um desempenho bem melhor, então achei interessante esse resultado. Enfim, provavelmente usar a busca binária teria sido bem mais eficaz.
 
-Percebi que as soluções do editorial usavam lógicas semelhantes a que eu usei, apesar de sempre fazerem uma coisinha ou outra diferente. O que se repetia muito nas soluções era a busca binária, então testei implementar a busca binária na minha solução para encontrar o índice correspondente à habilidade do trabalhador para limitar melhor a busca do 
+Percebi que as soluções do editorial usavam lógicas semelhantes a que eu usei, apesar de sempre fazerem uma coisinha ou outra diferente. O que se repetia muito nas soluções era a busca binária, então testei implementar a busca binária na minha solução para encontrar o índice correspondente à habilidade do trabalhador para limitar melhor a busca do melhor lucro para cada trabalhador. O runtime do código melhorou consideravelmente.
+
+![image](https://github.com/user-attachments/assets/dab21492-7807-4394-bddf-d6a9651f3166)
 
 # Testes
 ## Caso 1:
 **Input:**
-difficulty = [2,4,6,8,10]
-profit = [10,20,30,40,50]
-worker = [4,5,6,7]
+difficulty = [2,4,6,8,10], profit = [10,20,30,40,50], worker = [4,5,6,7]
+
 **Output:** 100
 
 ## Caso 2:
 **Input:**
-difficulty = [85,47,57]
-profit = [24,66,99]
-worker = [40,25,25]
+difficulty = [85,47,57], profit = [24,66,99], worker = [40,25,25]
+
 **Output:** 0
 
 ## Caso 3:
 **Input:**
-difficulty = [1,3,4,7,3,4,8]
-profit = [4,6,5,7,5,3,8]
-worker = [1,2,8,5]
+difficulty = [1,3,4,7,3,4,8], profit = [4,6,5,7,5,3,8], worker = [1,2,8,5]
+
 **Output:** 22
+
+**Nenhum memory leak foi detectado no Valgrind.**
