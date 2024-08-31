@@ -23,7 +23,7 @@ Optei por implementar o Insertion Sort, que apesar de ter uma complexidade maior
 
 ![image](https://github.com/user-attachments/assets/7951b62c-a684-4dc4-b5c1-7b71ee2bef32)
 
-# Código feito em casa
+# Código melhorado em casa
 
 Como meu código já funcionou em aula, não precisei elaborar um novo código. Ainda assim, analisei as soluções dos editoriais para ver o que poderia ter feito de diferente e também olhei as soluções dos usuários do LeetCode. 
 
