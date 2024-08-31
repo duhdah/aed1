@@ -31,7 +31,7 @@ Como meu código já funcionou em aula, não precisva elaborar um novo código. 
 
 Algo que testei modificando o meu código foi implementar o Merge Sort ao invés do Insertion Sort para ver que impacto teria no runtime. Incrivelmente, não teve praticamente nenhum, só ocupou mais memória. Achava que o Merge Sort teria um desempenho bem melhor, então achei interessante esse resultado.
 
-Percebi que as soluções do editorial usavam lógicas semelhantes a que eu usei, apesar de sempre fazerem uma coisinha ou outra diferente. O que se repetia muito nas soluções era a busca binária, então testei implementar a busca binária na minha solução para encontrar o índice correspondente à habilidade do trabalhador para limitar melhor a busca do melhor lucro para cada trabalhador. O runtime do código melhorou consideravelmente.
+Percebi que as soluções do editorial usavam lógicas semelhantes a que eu usei, apesar de sempre fazerem uma coisinha ou outra diferente. O que se repetia muito nas soluções era a busca binária, então testei implementar a busca binária na minha solução para encontrar o índice correspondente à habilidade do trabalhador para limitar melhor a busca do melhor lucro para cada trabalhador. O runtime do código melhorou consideravelmente. A complexidade dominante do código continuou sendo O(n²) devido ao Insertion Sort.
 
 Deixei a versão do código com busca binária no repositório como codigoMelhoradoEmCasa.c.
 
